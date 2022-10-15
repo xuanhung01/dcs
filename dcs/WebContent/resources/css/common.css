@@ -1,0 +1,168 @@
+body {
+	background-color: #eeeeee;
+}
+
+.container {
+	background-color: #ffffff;
+	margin-top: 50px;
+}
+
+form h2 ::AFTER {
+	border-bottom: thin;
+}
+
+div.success, label.success {
+	background: #eeffec none repeat scroll 0% 0%;
+	border-radius: 5px;
+	border: 1px solid #b6f4a6;
+	color: #111;
+	padding: 4px;
+}
+
+div.error, label.error {
+	background: #ffecec none repeat scroll 0% 0%;
+	border-radius: 5px;
+	border: 1px solid #f5aca6;
+	color: #111;
+	padding: 4px;
+}
+
+span.valError {
+	background: #ffecec none repeat scroll 0% 0%;
+	border-radius: 5px;
+	border: 1px solid #f5aca6;
+	color: #111;
+	padding: 4px;
+}
+
+.form-signin {
+	max-width: 400px;
+	padding: 15px;
+	margin: 0px auto;
+}
+
+.form-contact {
+	max-width: 650px;
+	padding: 15px;
+	margin: 0px auto;
+}
+
+.form-contact table {
+	width: 100%;
+	padding: 15px;
+	margin: 0px auto;
+}
+
+.form-contact table td {
+	padding: 4px;
+}
+
+.codeText {
+	letter-spacing: 10px;
+	color: red;
+	font-weight: bold;
+	font-size: large;
+}
+
+.widgettitle {
+	background: #f6a66a none repeat scroll 0% 0%;
+	color: #4c4a99;
+	padding: 2px 8px;
+	margin-bottom: 0px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.widgetcontent {
+	border-color: #f6a66a;
+	background: #FFF none repeat scroll 0% 0%;
+	padding: 5px 8px;
+	border-width: 0px 2px 2px;
+	border-style: none solid solid;
+}
+
+.ui-tooltip {
+	max-width: 400px !important;
+}
+
+.ui-tooltip-content {
+	max-width: 400px !important;
+}
+
+.scrollPaneDiv {
+	width: 100%;
+	height: 800px;
+	overflow: scroll;
+}
+
+table.dataTable {
+	font-size: 14;
+}
+
+@media print {
+	.print-break {
+		page-break-after: always;
+	}
+	.print-none {
+		display: none;
+	}
+	.glyphicon-question-sign {
+		display: none
+	}
+	.buttons {
+		display: none
+	}
+	input {
+		display: block;
+		border: none;
+		background-color: #fefefe;
+	}
+	select {
+		display: block;
+		border: none;
+		background-color: #fefefe;
+	}
+	.select2-drop-mask {
+		display: block;
+		border: none;
+		background-color: #fefefe;
+	}
+	input[type=file] {
+		display: none;
+	}
+	.fileupload-box {
+		display: none;
+	}
+	.widgettitle {
+		color: black;
+		font-size: 15px;
+		background-color: #eeeeee;
+	}
+	.section {
+		border-bottom: thin solid #f9f9f9;
+	}
+	.section h4 {
+		border-bottom: thin solid #cccccc;
+	}
+}
+
+.formModalMain {
+	position : absolute;
+	top: 10px;
+	left: 20px;
+	right: 10px;
+}
+
+#formMainCollectionCenter {
+	position : absolute;
+	top: 0px;
+	left: 10px;
+	right: 10px;
+}
+input:hover {
+    border-color: #F58220;
+}
+
+textarea:hover {
+    border-color: #F58220;
+}

@@ -1,0 +1,291 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+	padding-top: 2px;
+	background-color: white;
+}
+
+/*
+ * Global add-ons
+ */
+.sub-header {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+	border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+	display: none;
+}
+
+@media ( min-width : 768px) {
+	.sidebar {
+		position: absolute;
+		top: 5px;
+		left: 15px;
+		z-index: 1100;
+		padding: 5px 20px 20px 20px;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		/* Scrollable contents if viewport is shorter than content. */
+		background-color: #f5f5f5;
+		/* border-right: 1px solid #eee; */
+	}
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+	margin-right: -21px; /* 20px padding + 1px border */
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+
+.nav-stacked ul {
+	padding-left: 5px;
+}
+
+.nav-stacked>li>a {
+	padding-right: 20px;
+	padding-left: 5px;
+}
+
+.nav-sidebar>.active>a, .nav-sidebar>.active>a:hover, .nav-sidebar>.active>a:focus
+	{
+	color: #fff;
+	background-color: #428bca;
+}
+
+/*
+ * Main content
+ */
+.main {
+	padding: 10px;
+}
+
+@media ( min-width : 768px) {
+	.main {
+		/*padding-right: 40px;
+		padding-left: 40px;*/
+		
+	}
+}
+
+.main .page-header {
+	margin-top: 0;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+.placeholders {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.placeholders h4 {
+	margin-bottom: 0;
+}
+
+.placeholder {
+	margin-bottom: 20px;
+}
+
+.placeholder img {
+	display: inline-block;
+	border-radius: 50%;
+}
+
+.buttons {
+	border-top: #eeeeee thin solid;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.navbar-inverse {
+	background-image: url(../../resources/images/banner2.png);
+	/* height: 60px; */
+	background-color: #1199ED;
+	color: white;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #eeeeee;
+}
+
+form label {
+	font-weight: 400;
+}
+
+form h4 {
+	padding: 4px;
+	font-weight: bold;
+	font-size: 14px;
+	clear: both;
+	background-color: aliceblue;
+	color: #4c4a99;
+}
+
+form h6 {
+	padding: 8px;
+	font-weight: 500;
+	font-size: 14px;
+	background-color: #eeeeee;
+	width: 97%;
+	clear: both;
+}
+
+form .section {
+	/*padding: 4px;
+	border: thin #ddd solid;*/
+	
+}
+
+form .section .section {
+	/*padding: 8px;*/
+	border: thin #eee solid;
+}
+
+form .section.col-sm-6 {
+	/*padding: 8px;*/
+	border: thin #eee solid;
+}
+
+.form-horizontal .form-group {
+	margin-left: 0px;
+}
+
+.form-horizontal .control-label {
+	padding-top: 7px;
+	margin-bottom: 0px;
+	text-align: left;
+}
+
+.form-horizontal .radio {
+	min-height: 0px;
+}
+
+.form-group {
+	margin-bottom: 5px;
+	padding-left: 10px;
+}
+
+.form-group.required .control-label:after {
+	content: "*";
+	color: red;
+}
+
+.print-form {
+	margin-top: 0mm; font-size : 4mm;
+	font-weight: bold;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-size: 4mm;
+}
+
+.print-form .title {
+	font-size: 1.3em;
+	font-weight: bold;
+	font-family: "Times New Roman", Georgia, Serif;
+}
+
+table.print-table {
+	font-weight: bold;
+	width: 100%;
+	padding: 20px;
+	border: 2px solid black;
+}
+
+.print-table tr {
+	border: 1px solid black;
+	height: 80px;
+}
+
+.print-table td {
+	border: 1px solid black;
+	padding: 8px;
+}
+
+.navbar-fixed-top a {
+	color: white;
+}
+
+.fileupload-box {
+	
+}
+
+.fileupload-box h5 {
+	padding: 4px;
+	font-weight: bold;
+	font-size: 14px;
+	width: 95%;
+	background-color: #edf1f1;
+	clear: both;
+}
+
+.codeQR-div {
+	height: 160px;
+}
+
+.footer-gcn {
+	font-family: Times New Roman;
+	font-style: italic;
+	padding: 10px;
+	text-align: left;
+	position: absolute;
+	bottom: 30px;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.container-gcn1 {
+	border: 3px solid #000;
+	padding: 4px;
+	position: relative;
+}
+
+.container-gcn2 {
+	border: 1px solid #000;
+	padding: 4mm;
+	position: relative;
+	height: 250mm;
+}
+
+@page {
+	margin-top: 0mm;
+	margin-left: 15mm;
+	margin-right: 15mm;
+	margin-bottom: 15mm;
+}
+
+@media print {
+	body {
+		left: 0pt;
+		top: 0pt;
+		margin-top: 0mm;
+		margin-left: 0mm;
+		margin-right: 0mm;
+		margin-bottom: 0mm;
+	}
+	#printDiv {
+		margin-top: 0mm;
+		width: 180mm;
+		height: 260mm;
+		font-weight: bold;
+		font-family: "Times New Roman", Georgia, Serif;
+		font-size: 4mm;
+	}
+}

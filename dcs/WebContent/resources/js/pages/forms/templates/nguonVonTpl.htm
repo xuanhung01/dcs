@@ -1,0 +1,14 @@
+<tr rowid="{{:index}}">
+	<td class="rowIndex"></td>
+	<td><select id="kieu{{:index}}" name="listNguonVon[{{:index}}].nvnID"
+		 value="Chọn nguồn vốn" style="width:400px"  required>
+	<option value="">Lựa chọn</option>
+	{{for CMS.DM.List.NguonVon}}
+		<option value="${nguonVon.id}">{{:ma}} - {{:ten}}</option>
+	{{/for}}
+	</select></td>
+	<td><input name="listNguonVon[{{:index}}].tyLe" id="tyLe{{:index}}" class="tyLeInput" value="{{:tyLe}}"
+		type="text"  required/></td>
+	<td><button id="btnRemove"
+			class="btn icon-remove" data-rowid="{{:index}}">Xoá</button></td>
+</tr>

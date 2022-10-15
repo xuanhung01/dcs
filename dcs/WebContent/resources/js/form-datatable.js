@@ -1,0 +1,2 @@
+CMSCommonJs.Form = CMSCommonJs.Form || {};
+

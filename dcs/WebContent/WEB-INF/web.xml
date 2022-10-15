@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>cms-web</display-name>
+
+	<context-param>
+		<param-name>defaultHtmlEscape</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/invalidSession</location>
+	</error-page>
+	<error-page>
+		<error-code>603</error-code>
+		<location>/killSession</location>
+	</error-page>
+	<error-page>
+		<error-code>703</error-code>
+		<location>/cobDcs</location>
+	</error-page>
+</web-app>

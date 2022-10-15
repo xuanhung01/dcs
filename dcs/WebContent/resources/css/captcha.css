@@ -1,0 +1,386 @@
+#contactform {
+	width:500px;
+	-moz-border-radius:5px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#contactform form {
+	font:normal 11px/18px Verdana,Tahoma;
+	margin:0 0;
+	padding:0;
+	margin-top:20px;
+	width:100%;
+}
+#contactform fieldset {
+	padding:10px 0;
+	margin:0 0 15px 0;
+	background:#fff;
+	border:1px solid #ddd;
+	-moz-border-radius:5px
+}
+
+
+#contactform fieldset legend {
+	font:normal bold 18px/26px "Trebuchet MS",Verdana,Tahoma;
+	padding:3px 25px;
+	margin-left:30px;
+	text-transform:uppercase;
+	border:0px solid #ddd;
+}
+#contactform fieldset legend span {
+	font:normal 10px/18px Arial,Verdana,Tahoma;
+	text-transform:uppercase;
+	display:block;
+}
+#contactform form label {
+	display:block;
+	float:left;
+	width:150px;
+	padding:6px 10px 0 0;
+	margin:0px;
+	text-align:right;
+}
+#contactform input.inpt, #contactform textarea, #contactform select {
+	width:260px;
+	font:normal 11px/18px Verdana,Tahoma;
+	padding:5px;
+	margin:5px 0 5px 0;
+	background:#f5f5f5;
+	border:1px solid #ddd;
+}
+
+form br {
+	clear:left;
+}
+
+#contactform input.required {
+	background:#f5f5f5 url('images/required.gif') center right no-repeat;
+	height:1%;
+}
+
+#contactform .select select:focus {
+	border-color: #9b9b9b;
+}
+#contactform form input.btn
+	{
+		background:none;
+		border:none;
+	}
+
+#contactform form.c1 input:hover,textarea:hover
+	{
+		border:1px solid #d8d8d8;
+	}
+
+/* Error / Success / Notice 
+------------------------------------------------------------- */
+
+.notes		{ background:#f0f0f0; border:1px solid #b8b8b8; }
+.success	{ background:#ccfcd1; border:1px solid #60a400; }
+.error		{ background:#f9e3e3; border:1px solid #e79e9e; }
+.notice		{ background:#fcf0cc; border:1px solid #ecc735; }
+
+.notes,.notice,.success,.error
+			{
+				padding:10px;
+				font:normal 11px Verdana, Tahoma, Sans-serif;
+				color:#000;
+			}
+
+.notes span,.notice span,.success span,.error span 
+			{
+				font-weight:bold;
+				font-size:1.2em;
+			}
+
+.notes p,.success p,.error p,.notice p
+			{
+				margin:0px;
+				font:normal 11px Verdana, Tahoma, Sans-serif;
+				padding:0px;
+			}
+
+#note {width:90%;margin:0 auto; }
+
+
+
+
+
+
+#contentForm {
+  display: block;
+  width: 500px;
+  
+  padding: 25px;
+  background-color: white;
+}
+
+/* and now the form formatting itself */
+label {
+  display: block;
+  float: left;
+  clear: left;
+  Width: 150px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  margin: 5px 0;
+}
+
+label.c1 {
+  display: block;
+  float: left;
+  clear: left;
+  Width: 150px;
+  line-height: 50px;
+  height: 50px
+  margin-bottom: 10px;
+  margin: 5px 0;
+}
+
+input, textarea, select {
+  margin: 0;
+  padding: 2px;
+  font-size: 1em;
+  color: #666666;
+  background: #F5F5F5;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+}   
+
+input:focus, textarea:focus, select:focus {
+  border: 1px solid #999;
+  background-color: #FFFFFF;
+}
+
+input.button {
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  background: url(images/submit.jpg) no-repeat left top;
+  width: 90px;
+  height: 28px;
+  margin-left: 150px;
+}
+
+span.required{
+  font-size: 13px !important;
+  color: red !important;
+}
+
+.errormsg {
+  display: block;
+  width: 90%;
+  height: 22px;
+  line-height: 22px;
+  color: #FFFFFF;
+  font-weight: bold;
+  background: #FF9D9D url(images/stop.gif) no-repeat 10px center;
+  padding: 3px 10px 3px 40px;
+  margin: 10px 0;
+  border-top: 2px solid #FF0000;
+  border-bottom: 2px solid #FF0000;
+}
+
+.msgSent {
+  font-size: 20px;
+  text-align: center;
+}
+
+
+
+
+/*******************************************************************/
+/* new styles */
+.recaptchatable td img {
+	display:block
+}
+
+.recaptchatable .recaptcha_r1_c1 {
+	background:url(images/captcha/sprite.png) 0 -63px no-repeat;width:318px;height:9px
+}
+
+.recaptchatable .recaptcha_r2_c1 {
+	background:url(images/captcha/sprite.png) -18px 0 no-repeat;width:9px;height:57px
+}
+
+.recaptchatable .recaptcha_r2_c2 {
+	background:url(images/captcha/sprite.png) -27px 0 no-repeat;width:9px;height:57px
+}
+
+.recaptchatable .recaptcha_r3_c1 {
+	background:url(images/captcha/sprite.png) 0 0 no-repeat;width:9px;height:63px
+}
+
+.recaptchatable .recaptcha_r3_c2 {
+	background:url(images/captcha/sprite.png) -18px -57px no-repeat;width:300px;height:6px
+}
+
+.recaptchatable .recaptcha_r3_c3 {
+	background:url(images/captcha/sprite.png) -9px 0 no-repeat;width:9px;height:63px
+}
+
+.recaptchatable .recaptcha_r4_c1 {
+	background:url(images/captcha/sprite.png) -43px 0 no-repeat;width:171px;height:49px
+}
+
+.recaptchatable .recaptcha_r4_c2 {
+	background:url(images/captcha/sprite.png) -36px 0 no-repeat;width:7px;height:57px
+}
+
+.recaptchatable .recaptcha_r4_c4 {
+	background:url(images/captcha/sprite.png) -214px 0 no-repeat;width:97px;height:57px
+}
+
+.recaptchatable .recaptcha_r7_c1 {
+	background:url(images/captcha/sprite.png) -43px -49px no-repeat;width:171px;height:8px
+}
+
+.recaptchatable .recaptcha_r8_c1 {
+	background:url(images/captcha/sprite.png) -43px -49px no-repeat;width:25px;height:8px
+}
+
+.recaptchatable .recaptcha_image_cell center img {
+	height:57px;
+}
+
+.recaptchatable .recaptcha_image_cell center {
+	height:57px
+}
+
+.recaptchatable .recaptcha_image_cell {
+	background-color:white;height:57px
+}
+
+#recaptcha_area,#recaptcha_table {
+	width:318px!important
+}
+
+.recaptchatable,#recaptcha_area tr,#recaptcha_area td,#recaptcha_area th {
+	margin:0!important;border:0!important;padding:0!important;border-collapse:collapse!important;vertical-align:middle!important
+}
+
+.recaptchatable * {
+	margin:0;padding:0;border:0;font-family:helvetica,sans-serif;font-size:8pt;color:black;position:static;top:auto;left:auto;right:auto;bottom:auto;text-align:left!important
+}
+
+.recaptchatable #recaptcha_image {
+	margin:auto
+}
+
+.recaptchatable img {
+	border:0!important;margin:0!important;padding:0!important
+}
+
+.recaptchatable a,.recaptchatable a:hover {
+	outline:none;border:0!important;padding:0!important;text-decoration:none;color:blue;background:none!important;font-weight:normal
+}
+
+.recaptcha_input_area {
+	position:relative!important;width:146px!important;height:45px!important;margin-left:20px!important;margin-right:5px!important;margin-top:4px!important;background:none!important
+}
+
+.recaptchatable label.recaptcha_input_area_text {
+	margin:0!important;padding:0!important;position:static!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;background:none!important;height:auto!important;width:auto!important
+}
+
+.recaptcha_theme_red label.recaptcha_input_area_text,.recaptcha_theme_white label.recaptcha_input_area_text {
+	color:black!important
+}
+
+.recaptcha_theme_blackglass label.recaptcha_input_area_text {
+	color:white!important
+}
+
+.recaptchatable #recaptcha_response_field {
+	width:145px!important;position:absolute!important;bottom:7px!important;padding:0!important;margin:0!important;font-size:10pt
+}
+
+.recaptcha_theme_blackglass #recaptcha_response_field,.recaptcha_theme_white #recaptcha_response_field {
+	border:1px solid gray
+}
+
+.recaptcha_theme_red #recaptcha_response_field {
+	border:1px solid #cca940
+}
+
+.recaptcha_audio_cant_hear_link {
+	font-size:7pt;color:black
+}
+
+.recaptchatable {
+	line-height:1em
+}
+
+#recaptcha_instructions_error {
+	color:red!important
+}
+
+.recaptcha_is_showing_audio .recaptcha_only_if_image,.recaptcha_isnot_showing_audio .recaptcha_only_if_audio,.recaptcha_had_incorrect_sol .recaptcha_only_if_no_incorrect_sol,.recaptcha_nothad_incorrect_sol .recaptcha_only_if_incorrect_sol {
+	display:none !important
+}
+
+.captcha2 {
+	margin-left: 3px;
+	background: #3b5998;
+	width: 312px;
+}
+
+.captcha2 .padding {
+	padding: 20px 15px 15px 15px;
+	overflow: hidden;
+}
+
+.captcha2 img {
+	margin-bottom: 5px;
+}
+
+.captcha2 label {
+	display: block; float: left; clear: left;
+	line-height: 37px; width: 130px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.captcha2 input {
+	width: 140px;
+	padding: 10px 5px; margin-bottom: 5px;
+	border: 1px solid #2a457c;
+}
+
+.captcha2 .c2button {
+	text-align: right;
+}
+
+.captcha3 {
+	background: #fcfcfc;
+	width: 312px;
+}
+
+.captcha3 .padding {
+	padding: 5px;
+	overflow: hidden;
+}
+
+.captcha3 input {
+	width: 240px;
+	padding: 5px; margin-top: 5px;
+	border: 1px solid #abadb3;
+}
+
+.captcha4 label {
+	display: block; float: left; clear: left;
+	line-height: 37px; width: 130px; height: 120px;
+	font-weight: bold;
+}
+
+.captcha4 input {
+	border: 1px solid #abadb3;
+	margin-bottom: 5px;
+}
+
+.captcha4 .info {
+	color: #6f6f6f;
+}
+
+
+
