@@ -78,4 +78,10 @@ public class PasswordController {
 		model.addAttribute("formModel", dto);
 		return Constants.URL_DASH_BOARD;
 	}
+	
+	public static void main(String[] args) {
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		String password = bCryptPasswordEncoder.encode("Mb@12345");
+		System.out.println(password);
+	}
 }

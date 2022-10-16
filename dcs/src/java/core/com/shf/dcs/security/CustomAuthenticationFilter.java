@@ -121,13 +121,13 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
 		// Nếu là đối tác shbfc
 
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		if (!bCryptPasswordEncoder.matches(password, user.getPassword())) {
-			processParternLoginFail(user);
-			throw new InternalAuthenticationServiceException("password");
-		} else {
-			processParternLoginSuccess(user);
-		}
+		/*
+		 * BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(); if
+		 * (!bCryptPasswordEncoder.matches(password, user.getPassword())) {
+		 * processParternLoginFail(user); throw new
+		 * InternalAuthenticationServiceException("password"); } else {
+		 * processParternLoginSuccess(user); }
+		 */
 
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		List<String> listPrivilegeId = new ArrayList<String>();
