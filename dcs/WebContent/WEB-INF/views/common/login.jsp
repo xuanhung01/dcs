@@ -64,7 +64,7 @@
 	 -->
 	<div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit" 
-			style="color: #0000009e; background-color: #ececf3;border-color: #ececf3">Đăng nhập</button>
+			style="color: #0000009e; background-color: #ececf3;">Đăng nhập</button>
 	</div>
 
 	<%-- <div>

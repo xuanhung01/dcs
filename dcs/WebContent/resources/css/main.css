@@ -1,10 +1,9 @@
 header {
 	width: 100%;
-	height: 80px;
-	background-image: url(../../resources/images/banner.png);
+	height: 100px;
+	background-image: url(../../resources/images/banner1.png);
 	text-align: center;
 	color: white;
-	margin-top: 5px;
 }
 
 footer {
@@ -17,12 +16,5 @@ footer {
 }
 
 .container {
-	max-width: 400px;
-	margin-top: 160px;
-	margin-right: 200px;
-}
-body {
-	background-image: url(../../resources/images/background-home.jpg);
-	background-size : cover;
-	
+	max-width: 930px;
 }

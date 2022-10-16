@@ -15,7 +15,7 @@
 </c:choose>
 <c:set var="baseURL" value="${reqProtocol}://${req.serverName}:${reqServerPort}${req.contextPath}" />
 
-<link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />">
+<%-- <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />"> --%>
 <link href="<c:url value="/resources/js/libs/jquery-ui.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/js/libs/jquery-ui.theme.css" />" rel="stylesheet">
 <link type="text/css" href="<c:url value="/resources/js/libs/bootstrap-3.3.5/css/bootstrap.css" />" rel="stylesheet" />
