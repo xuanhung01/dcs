@@ -27,13 +27,13 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3">Tên tài khoản:</label>
 				<div class="col-sm-9">
-					<form:input path="userName" id="userName" type="text" style="width: 50%;" required="true"/>
+					<form:input path="username" id="username" type="text" style="width: 50%;" required="true"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3">Họ và tên người dùng:</label>
 				<div class="col-sm-9">
-					<form:input path="realName" id="realName" type="text" style="width: 50%;" required="true" />
+					<form:input path="realname" id="realname" type="text" style="width: 50%;" required="true" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -45,7 +45,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3">Cấp trên:</label>
 				<div class="col-sm-9">
-					<form:input path="parentUserName" id="parentUserName" type="text" style="width: 50%;" required="true" />	
+					<form:input path="parentUsername" id="parentUsername" type="text" style="width: 50%;" required="true" />	
 				</div>
 			</div>
 		</div>

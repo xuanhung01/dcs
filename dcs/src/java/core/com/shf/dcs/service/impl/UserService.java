@@ -59,15 +59,15 @@ public class UserService implements IUserService {
 	public DebtUser registerNewUserAccount(UserAccountDto accountDto) throws Exception {
 		// Check user info
 		final DebtUser user = new DebtUser();
-		user.setUsername(StringUtils.upperCase(accountDto.getUserName()));
-		user.setRealname(accountDto.getRealName());
+		user.setUsername(StringUtils.upperCase(accountDto.getUsername()));
+		user.setRealname(accountDto.getRealname());
 		user.setGroupId(accountDto.getGroupId());
 		user.setCreatedDate(new Date());
 		user.setCreatedBy(getLoggedUserName());
 		user.setExt(accountDto.getExt());
 		user.setStaffCode(accountDto.getStaffCode());
-		user.setEnabled(accountDto.isEnable());
-		user.setParentUsername(accountDto.getParentUserName());
+		user.setEnabled(accountDto.getEnabled());
+		user.setParentUsername(accountDto.getParentUsername());
 		if (accountDto.getStartAllocatedDate() != null) {
 			user.setStartAllocatedDate(DateUtil.parseDate(accountDto.getStartAllocatedDate(), DateUtil.yyyyMMdd3));
 		}
@@ -82,13 +82,13 @@ public class UserService implements IUserService {
 	@Override
 	public DebtUser createNewUserAccount(final UserAccountDto accountDto) throws Exception {
 		// Check user info
-		if (isUsernameExist(accountDto.getUserName())) {
+		if (isUsernameExist(accountDto.getUsername())) {
 			throw new UserAlreadyExistException();
 		}
 		DebtUser user = new DebtUser();
-		user.setUsername(StringUtils.upperCase(accountDto.getUserName()));
-		user.setRealname(accountDto.getRealName());
-		user.setParentUsername(accountDto.getParentUserName());
+		user.setUsername(StringUtils.upperCase(accountDto.getUsername()));
+		user.setRealname(accountDto.getRealname());
+		user.setParentUsername(accountDto.getParentUsername());
 		user.setGroupId(accountDto.getGroupId());
 		user.setCreatedDate(new Date());
 		user.setCreatedBy(getLoggedUserName());
@@ -101,12 +101,11 @@ public class UserService implements IUserService {
 		if (accountDto.getEndAllocatedDate() != null) {
 			user.setEndAllocatedDate(DateUtil.parseDate(accountDto.getEndAllocatedDate(), DateUtil.yyyyMMdd3));
 		}
-		if (accountDto.getHasPartner()) {
-			BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-			user.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
-			user.setPartnerName(accountDto.getPartnerName());
-			user.setDescription(accountDto.getPassword());
-		} 
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		user.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
+		user.setPartnerName(accountDto.getPartnerName());
+		user.setDescription(accountDto.getPassword());
+		 
 		
 		user.setTeamCode(accountDto.getTeamCode());
 		DebtUser savedUser = userDAO.save(user);
@@ -222,11 +221,11 @@ public class UserService implements IUserService {
 
 	@Override
 	public DebtUser editUserAccount(UserAccountDto accountDto) {
-		final DebtUser user = userDAO.findByUsername(StringUtils.upperCase(accountDto.getUserName()));
+		final DebtUser user = userDAO.findByUsername(StringUtils.upperCase(accountDto.getUsername()));
 		if (user != null) {
-			user.setRealname(accountDto.getRealName());
+			user.setRealname(accountDto.getRealname());
 			user.setGroupId(accountDto.getGroupId());
-			user.setParentUsername(accountDto.getParentUserName());
+			user.setParentUsername(accountDto.getParentUsername());
 			user.setExt(accountDto.getExt());
 			user.setStaffCode(accountDto.getStaffCode());
 			if (accountDto.getStartAllocatedDate() != null) {
@@ -235,31 +234,26 @@ public class UserService implements IUserService {
 			if (accountDto.getEndAllocatedDate() != null) {
 				user.setEndAllocatedDate(DateUtil.parseDate(accountDto.getEndAllocatedDate(), DateUtil.yyyyMMdd3));
 			}
-			if (accountDto.getHasPartner()) {
-				BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-				if (!accountDto.getPassword().equals(user.getPassword())) {
-					user.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
-					user.setDescription(accountDto.getPassword());
-				}
-				user.setPartnerName(accountDto.getPartnerName());
-			} else {
-				user.setPassword(null);
-				user.setDescription(null);
+			BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+			if (!accountDto.getPassword().equals(user.getPassword())) {
+				user.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
+				user.setDescription(accountDto.getPassword());
 			}
+			user.setPartnerName(accountDto.getPartnerName());
 			user.setTeamCode(accountDto.getTeamCode());
 			return userDAO.save(user);
 		} else {
-			throw new UserNotFoundException("User " + accountDto.getUserName() + "Not found");
+			throw new UserNotFoundException("User " + accountDto.getUsername() + "Not found");
 		}
 	}
 
 	@Override
 	public UserAccountDto createDto(DebtUser user) {
 		UserAccountDto dto = new UserAccountDto();
-		dto.setUserName(user.getUsername());
-		dto.setRealName(user.getRealname());
+		dto.setUsername(user.getUsername());
+		dto.setRealname(user.getRealname());
 		dto.setGroupId(user.getGroupId());
-		dto.setParentUserName(user.getParentUsername());
+		dto.setParentUsername(user.getParentUsername());
 		dto.setPassword(user.getPassword());
 		dto.setPasswordConfirm(user.getPassword());
 		dto.setPartnerName(user.getPartnerName());
@@ -279,8 +273,8 @@ public class UserService implements IUserService {
 
 	@Override
 	public void updateDtoInfo(UserAccountDto dto, DebtUser user) {
-		dto.setUserName(user.getUsername());
-		dto.setRealName(user.getRealname());
+		dto.setUsername(user.getUsername());
+		dto.setRealname(user.getRealname());
 	}
 
 	@Override
@@ -405,7 +399,7 @@ public class UserService implements IUserService {
 	@Override
 	public DebtUser editGroupUserAccount(UserAccountDto accountDto) {
 
-		final DebtUser user = userDAO.findByUsername(StringUtils.upperCase(accountDto.getUserName()));
+		final DebtUser user = userDAO.findByUsername(StringUtils.upperCase(accountDto.getUsername()));
 		if (user != null) {
 			user.setGroupId(accountDto.getGroupId());
 			user.setLastUpdatedDate(new Date());
@@ -421,7 +415,7 @@ public class UserService implements IUserService {
 			user.setTeamCode(accountDto.getTeamCode());
 			return userDAO.save(user);
 		} else {
-			throw new UserNotFoundException("User " + accountDto.getUserName() + "Not found");
+			throw new UserNotFoundException("User " + accountDto.getUsername() + "Not found");
 		}
 	}
 

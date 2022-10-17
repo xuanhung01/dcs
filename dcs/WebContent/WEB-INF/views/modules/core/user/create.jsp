@@ -41,82 +41,42 @@
 			<div class="alert alert-danger" id="alertshowErrorMsg" style="display:none;"></div>
 			<h4>Thông tin người dùng</h4>
 			<div class="form-group required">
-				<label class="control-label col-sm-1">Tên tài khoản:</label>
-				<div class="col-sm-9">
-					<form:input path="userName" id="userName" type="text" cssClass="txtuppercase" style="width: 50%;" required="true"/>
-					<form:errors path="userName" element="div"></form:errors>
+				<label class="control-label col-sm-2">Tên tài khoản:</label>
+				<div class="col-sm-5">
+					<form:input path="username" id="username" type="text" cssClass="txtuppercase form-control" required="true"/>
+					<form:errors path="username" element="div"></form:errors>
 				</div>
 			</div>
 			<div class="form-group required">
-				<label class="control-label col-sm-1">Họ và tên:</label>
-				<div class="col-sm-9">
-					<form:input path="realName" id="realName" type="text" style="width: 50%;" required="true" />
+				<label class="control-label col-sm-2">Họ và tên:</label>
+				<div class="col-sm-5">
+					<form:input path="realname" id="realname" type="text" cssClass="form-control" required="true" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-1">Group Code:</label>
-				<div class="col-sm-1-5">
-					<form:select path="groupId" id="groupId" style="width: 100%;">
+				<label class="control-label col-sm-2">Cấp trên:</label>
+				<div class="col-sm-5">
+					<form:select path="parentUsername" id="parentUsername" multiple="true" style="width: 50%;">
 						<form:option value="" disabled="disabled"></form:option>
-						<form:options items="${groupList}" itemLabel="groupCode" itemValue="id" />
-					</form:select>
-				</div>
-				<label class="control-label col-sm-1">Team Code:</label>
-				<div class="col-sm-1-5">
-					<form:input path="teamCode" id="teamCode" style="width: 100%;" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-1">Cấp trên:</label>
-				<div class="col-sm-9">
-					<form:select path="parentUserName" id="parentUserName" style="width: 50%;" multiple="true">
-						<form:option value="" disabled="disabled"></form:option>
-						<form:options items="${userList}" itemLabel="userName" itemValue="userName" />
+						<form:options items="${userList}" itemLabel="username" itemValue="username" />
 					</form:select>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-1">EXT:</label>
-				<div class="col-sm-1-5">
-					<form:input path="ext" id="ext" style="width: 100%;" class="form-control txtformatNumber" maxlength="4"/>
+			<div class="form-group required">
+				<label class="control-label col-sm-2">Mật khẩu:</label>
+				<div class="col-sm-5">
+					<form:input path="password" id="password" type="password" data-toggle="password" cssClass="form-control pwd" maxlength="100" data-rule-minlength="6"/>
 				</div>
-				<label class="control-label col-sm-1">HR CODE:</label>
-				<div class="col-sm-1-5">
-					<form:input path="staffCode" id="staffCode" style="width: 100%;" class="form-control" maxlength="12"/>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-1">Ngày hiệu lực p/b:</label>
-				<div class="col-sm-1-5">
-					<form:input path="startAllocatedDate" id="startAllocatedDate" style="width: 100%;" class="form-control txtInputDate" maxlength="12"/>
-				</div>
-				<label class="control-label col-sm-1">Ngày kết thúc p/b:</label>
-				<div class="col-sm-1-5">
-					<form:input path="endAllocatedDate" id="endAllocatedDate" style="width: 100%;" class="form-control txtInputDate" maxlength="12"/>
+				<div class="col-sm-1">
+					<span class="input-group-btn">
+			        	<button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
+			        </span>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-1">Đối tác:</label>
-				<div class="col-sm-9">
-					<form:checkbox path="hasPartner" id="hasPartner" data-toggle="toggle" data-size="small" data-on="Có" data-off="Không" />
-				</div>
-			</div>	
-			<div class="form-group">
-				<label class="control-label col-sm-1">Mật khẩu:</label>
-				<div class="col-sm-9">
-					<form:input path="password" id="password" type="password" style="width: 50%;" disabled="true" maxlength="100" data-rule-minlength="6"/>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-1">Nhập lại mật khẩu:</label>
-				<div class="col-sm-9">
-					<form:input path="passwordConfirm" id="passwordConfirm" type="password" style="width: 50%;" disabled="true" maxlength="100" data-rule-equalTo="#password"/>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-1">Mô tả đối tác:</label>
-				<div class="col-sm-9">
-					<form:input path="partnerName" id="partnerName" type="text" style="width: 50%;" disabled="true"/>
+			<div class="form-group required">
+				<label class="control-label col-sm-2">Nhập lại mật khẩu:</label>
+				<div class="col-sm-5">
+					<form:input path="passwordConfirm" id="passwordConfirm" data-toggle="password" cssClass="form-control pwd" type="password" maxlength="100" data-rule-equalTo="#password"/>
 				</div>
 			</div>
 		</div>
@@ -159,7 +119,7 @@ var arrAllPartner = [];
 	});
 </c:forEach>
 
-$(function() {
+$(function() {	
 	if($('#groupId').val() != ''){
 		var groupCode = null;
 		$.each(arrAllGroup, function( index, value ) {
@@ -248,7 +208,7 @@ $(function() {
 		$(this).valid();
 	});
 	
-	$('#parentUserName').select2({
+	$('#parentUsername').select2({
 		allowClear: true,
 		placeholder : "Lựa chọn",
 		language : "vi"
@@ -256,77 +216,20 @@ $(function() {
 		$(this).valid();
 	});
 	
-	if($('#hasPartner').prop('checked')){
-		$("#password").prop('disabled', false);
-		$("#passwordConfirm").prop('disabled', false);
-		var partnerName = $('#partnerName').val();
-		$("#partnerName").prop('disabled', false);
-		$("#partnerName").select2(
-		{
-			placeholder : "Lựa chọn",
-			language : "vi",
-			data : arrAllPartner,
-			allowClear: true
-		}).on("select2-close", function(e) {
-			$(this).valid();
-		});
-		$("#partnerName").val({'id' : partnerName,'text' : partnerName}).trigger("change");
-	} else {
-		$("#password").prop('disabled', true);
-		$("#password").val('');
-		$("#passwordConfirm").prop('disabled', true);
-		$("#passwordConfirm").val('');
-		$("#partnerName").prop('disabled', true);
-		$("#partnerName").val('');
-	}
-	
-	$('#hasPartner').change(function() {
-   		var checked = $(this).prop('checked');
-   		if(checked){
-   			$("#password").prop('disabled', false);
-   			$("#passwordConfirm").prop('disabled', false);
-   			$("#partnerName").prop('disabled', false);	
-   			$('#partnerName').select2('data', null);
-			$('#partnerName').select2('destroy');
-   			$("#partnerName").select2(
-			{
-				placeholder : "Lựa chọn",
-				language : "vi",
-				data : arrTeamCode,
-				allowClear: true,
-				query : function(query) {
-					CMSCommonJs.Select2.queryArray(arrAllPartner, query);
-				}
-			}).on("select2-close", function(e) {
-				$(this).valid();
-			});
-   		} else {
-   			$("#password").prop('disabled', true);
-   			$("#password").val('');
-   			$("#passwordConfirm").prop('disabled', true);
-   			$("#passwordConfirm").val('');
-			$('#partnerName').select2('data', null);
-			$('#partnerName').select2('destroy');
-   			$("#partnerName").prop('disabled', true);
-   		}
-	});
-	
 	$('#btnSave').on('click', function(){
-   		var checked = $('#hasPartner').prop('checked');
-   		if(checked){
-   			if($.trim($("#password").val()) == ''){
-		   		alertError('Mật khẩu bạn chưa nhập');
-		   		return false;
-   			}
-   			if($("#password").val() != $("#passwordConfirm").val()){
-   				alertError('Mật khẩu và nhập lại chưa trùng khớp');
-		   		return false;
-   			}
-   			if($.trim($("#partnerName").select2("val")) == ''){
-   				alertError('Mô tả đối tác bạn chưa nhập');
-		   		return false;
-   			}
+		if($.trim($("#password").val()) == ''){
+			alertError('Mật khẩu bạn chưa nhập');
+			return false;
 		}
+		if($("#password").val() != $("#passwordConfirm").val()){
+			alertError('Mật khẩu và nhập lại chưa trùng khớp');
+			return false;
+		}
+		if($.trim($("#partnerName").select2("val")) == ''){
+			alertError('Mô tả đối tác bạn chưa nhập');
+			return false;
+		}
+		
 	});
 })
 

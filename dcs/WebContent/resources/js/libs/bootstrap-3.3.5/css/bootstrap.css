@@ -4814,8 +4814,8 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 		float: left;
 	}
 	.navbar-nav>li>a {
-		padding-top: 15px;
-		padding-bottom: 15px;
+		padding-top: 5px;
+		padding-bottom: 5px;
 	}
 }
 
@@ -5252,8 +5252,8 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 	z-index: 2;
 	color: #fff;
 	cursor: default;
-	background-color: #F58220;
-	border-color: #F58220;
+	background-color: #4c4a99;
+	border-color: #4c4a99;
 }
 
 .pagination>.disabled>span, .pagination>.disabled>span:hover,

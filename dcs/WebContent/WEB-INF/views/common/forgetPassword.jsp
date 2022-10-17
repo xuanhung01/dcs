@@ -30,9 +30,9 @@
 			<div>
 				<form:form class="form-horizontal" id="formResetPassword" modelAttribute="formModel" method="post">
 					<div class="form-group required">
-						<label class="control-label col-sm-2" for="userName">Tên tài khoản:</label>
+						<label class="control-label col-sm-2" for="username">Tên tài khoản:</label>
 						<div class="col-sm-10">
-							<form:input path="userName" id="userName" style="width: 50%;" type="text" required="true" data-rule-minlength="6" data-rule-maxlength="40" />
+							<form:input path="username" id="username" style="width: 50%;" type="text" required="true" data-rule-minlength="6" data-rule-maxlength="40" />
 						</div>
 					</div>
 					<div class="form-group required">

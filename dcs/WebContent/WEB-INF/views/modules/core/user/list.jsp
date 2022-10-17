@@ -51,13 +51,8 @@
 				<th >Tên</th>
 				<th>Role</th>
 				<th>Group Code</th>
-				<th>Team Code</th>
 				<th>Cấp trên</th>
 				<th>EXT</th>
-				<th>HR CODE</th>
-				<th>Ngày h/l phân bổ</th>
-				<th>Ngày k/t phân bổ</th>
-				<th>Đối tác</th>
 				<th>Trạng thái</th>
 				<th>Thao tác</th>
 			</tr>
@@ -67,8 +62,8 @@
 			<c:forEach var="user" items="${userList}" varStatus="status">
 				<tr>
 					<td></td>
-					<td><a class="btnView" style="cursor: pointer; <c:if test="${user.userName == userName}">color:red</c:if>" title="Xem chi tiết" userName="${user.userName}" >${user.userName}</a></td>
-					<td>${user.realName}</td>
+					<td><a class="btnView" style="cursor: pointer; <c:if test="${user.username == username}">color:red</c:if>" title="Xem chi tiết" username="${user.username}" >${user.username}</a></td>
+					<td>${user.realname}</td>
 					<td>
 						<c:forEach var="role" items="${user.roles}" varStatus="status">
 							${role.name}
@@ -81,26 +76,17 @@
 							</c:if>
 						</c:forEach>
 					</td>
-					<td>${user.teamCode}</td>
-					<td>${user.parentUserName}</td>
+					<td>${user.parentUsername}</td>
 					<td>${user.ext}</td>
-					<td>${user.staffCode}</td>
-					<td>${user.startAllocatedDateStr}</td>
-					<td>${user.endAllocatedDateStr}</td>
-					<td>
-						<c:if test="${user.hasPartner}">
-							<i class=" glyphicon glyphicon-cutlery" title="Đối tác"></i>
-						</c:if>
-					</td>
 					<td>
 						<c:if test="${user.enabled}">
 							<i class=" glyphicon glyphicon-ok" title="Enable"></i>
 						</c:if>
 					</td>
-					<td width="12%">
-						<a class="btn btn-default btnSua" title="Sửa" userName="${user.userName}"><i class=" glyphicon glyphicon-pencil"></i></a> 
-						<a class="btn btn-default btnXoa" title="Xoá" userName="${user.userName}"><i class=" glyphicon glyphicon-remove"></i></a>
-						<a class="btn btn-default btnStatus" title="Enable/Disable" userName="${user.userName}"><i class=" glyphicon glyphicon-ban-circle"></i></a>
+					<td width="17%">
+						<a class="btn btn-default btnSua" title="Sửa" username="${user.username}"><i class=" glyphicon glyphicon-pencil"></i></a> 
+						<a class="btn btn-default btnXoa" title="Xoá" username="${user.username}"><i class=" glyphicon glyphicon-remove"></i></a>
+						<a class="btn btn-default btnStatus" title="Enable/Disable" username="${user.username}"><i class=" glyphicon glyphicon-ban-circle"></i></a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -114,9 +100,9 @@
 		$('.btnXoa').bootstrap_confirm_delete({
 			  heading: 'Remove User',
 			  message: 'Bạn có thực sự muốn xóa bản ghi?',
-			  data_type: $(this).attr("userName"),
+			  data_type: $(this).attr("username"),
 			  callback: function( event ){
-				  var id = event.data.originalObject.attr("userName");
+				  var id = event.data.originalObject.attr("username");
 				  var url = "<c:url value="/system/user/remove/"/>" + id;
 				  window.location.href = url;
 			  }
@@ -125,9 +111,9 @@
 		$('.btnStatus').bootstrap_confirm_delete({
 			  heading: 'Active/Inactive User',
 			  message: 'Bạn có thực sự muốn Active/Inactive người dùng?',
-			  data_type: $(this).attr("userName"),
+			  data_type: $(this).attr("username"),
 			  callback: function( event ){
-				  var id = event.data.originalObject.attr("userName");
+				  var id = event.data.originalObject.attr("username");
 				  var url = "<c:url value="/system/user/active/"/>" + id;
 				  window.location.href = url;
 			  }
@@ -159,13 +145,13 @@
 		
 		$(document).on("click", ".btnSua", function(e) {
 			e.preventDefault();
-			var id = $(this).attr("userName");
+			var id = $(this).attr("username");
 			var url = "<c:url value="/system/user/edit/"/>" + id;
 			window.location.href = url;
 		});
 		$(document).on("click", ".btnView", function(e) {
 			e.preventDefault();
-			var id = $(this).attr("userName");
+			var id = $(this).attr("username");
 			var url = "<c:url value="/system/user/view/"/>" + id;
 			window.location.href = url;
 		});

@@ -65,16 +65,16 @@ span.valError {
 }
 
 .widgettitle {
-	background: #f6a66a none repeat scroll 0% 0%;
-	color: #4c4a99;
-	padding: 2px 8px;
+	background: #4c4a99 none repeat scroll 0% 0%;
+	color: #ffffff;
+	padding: 6px 160px;
 	margin-bottom: 0px;
 	font-size: 20px;
 	font-weight: bold;
 }
 
 .widgetcontent {
-	border-color: #f6a66a;
+	border-color: #4c4a99;
 	background: #FFF none repeat scroll 0% 0%;
 	padding: 5px 8px;
 	border-width: 0px 2px 2px;
@@ -161,9 +161,9 @@ table.dataTable {
 }
 
 input:hover {
-	border-color: #F58220;
+	border-color: #4c4a99;
 }
 
 textarea:hover {
-	border-color: #F58220;
+	border-color: #4c4a99;
 }

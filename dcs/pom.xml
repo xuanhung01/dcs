@@ -13,7 +13,6 @@
 		<apache.poi.version>3.17</apache.poi.version>
 		<guava.version>18.0</guava.version>
 		<oauth.version>2.3.5.RELEASE</oauth.version>
-		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
@@ -204,18 +203,21 @@
 	</dependencies>
 
 	<build>
-		<finalName>SpringMVCFreeMarker</finalName>
+		<sourceDirectory>src/java/core</sourceDirectory>
 		<plugins>
-
-			<!-- Config: Maven Tomcat Plugin -->
-			<!-- http://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin%20 -->
 			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat8-maven-plugin</artifactId>
-				<version>2.2</version>
-				<!-- Config: contextPath and Port (Default: /SpringMVCFreeMarker : 8080) -->
-				<!-- <configuration> <path>/</path> <port>8899</port> </configuration> -->
-
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<release>1.8</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

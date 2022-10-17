@@ -7,8 +7,10 @@
 }
 
 .modal-dialog {
-	width: auto;
+	width: 50%;
 	z-index: 1001;
+  	padding-left:30%;
+  	padding-top:10%;
 }
 
 .modal-content {

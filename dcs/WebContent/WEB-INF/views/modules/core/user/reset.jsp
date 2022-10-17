@@ -32,7 +32,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3">Tên tài khoản:</label>
 				<div class="col-sm-9">
-					<form:input path="userName" id="userName" type="text" style="width: 50%;" readonly="true"/>
+					<form:input path="username" id="username" type="text" style="width: 50%;" readonly="true"/>
 				</div>
 			</div>
 			<div class="form-group required">

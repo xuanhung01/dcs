@@ -832,12 +832,12 @@ CMSCommonJs.Form.showNotifier = function(currentForm) {
 
 /* show message lỗi */
 function alertError(errorMsg) {
-   $('#alertshowErrorMsg').empty();
-   $('#alertshowErrorMsg').append(errorMsg);
-   $('#alertshowErrorMsg').fadeIn(1000);
-   setTimeout(function() { 
-       $('#alertshowErrorMsg').fadeOut(1000); 
-   }, 3000);
+	$.showNotification({
+  		body:errorMsg,
+  		type:"danger",
+  		duration: 3000,
+  		direction:"append"
+	})
 }
 
 /* show message thành công */

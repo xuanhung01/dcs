@@ -30,8 +30,6 @@
 			<tr role="row">
 				<th>Mã role</th>
 				<th>Tên role</th>
-				<th>Mobile</th>
-				<th>DCS WEB</th>
 				<th style="width: 150px">Thao tác</th>
 			</tr>
 		</thead>
@@ -41,16 +39,6 @@
 				<tr>
 					<td><a class="btnView" style="cursor: pointer;" title="Xem chi tiết" id="${role.id}" >${role.id}</a></td>
 					<td>${role.name}</td>
-					<td>
-						<c:if test="${role.hasMobile}">
-							<i class=" glyphicon glyphicon-phone" title="Enable"></i>
-						</c:if>
-					</td>
-					<td>
-						<c:if test="${role.hasDcs}">
-							<i class=" glyphicon glyphicon-star" title="Enable"></i>
-						</c:if>
-					</td>
 					<td style="width: 150px"><a class="btn btn-default btnSua" title="Sửa" id="${role.id}"><i class=" glyphicon glyphicon-pencil"></i></a> <a class="btn btn-default btnXoa"
 						title="Xoá" id="${role.id}"><i class=" glyphicon glyphicon-remove"></i></a></td>
 				</tr>

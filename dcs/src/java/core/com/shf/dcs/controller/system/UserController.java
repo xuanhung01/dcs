@@ -128,7 +128,7 @@ public class UserController {
 				Date limitDate = DateUtil.getDate(1, 1, 2099);
 		        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
 
-		        if(special.matcher(dto.getRealName()).find()) {
+		        if(special.matcher(dto.getRealname()).find()) {
 					errors.add(new ObjectError("OtherException","Tên tài khoản hoặc Họ và tên có ký tự đặc biệt [!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]"));
 				} 
 		        if(StringUtils.isNotEmpty(dto.getStartAllocatedDate())) {
@@ -193,7 +193,7 @@ public class UserController {
 			Date limitDate = DateUtil.getDate(1, 1, 2099);
 	        Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
 
-	        if(special.matcher(dto.getUserName()).find() || special.matcher(dto.getRealName()).find()) {
+	        if(special.matcher(dto.getUsername()).find() || special.matcher(dto.getRealname()).find()) {
 				errors.add(new ObjectError("OtherException","Tên tài khoản hoặc Họ và tên có ký tự đặc biệt [!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]"));
 			} 
 	        if(StringUtils.isNotEmpty(dto.getStartAllocatedDate())) {
@@ -225,7 +225,7 @@ public class UserController {
 			}
 		} catch (UserAlreadyExistException e) {
 			logger.error(ExceptionUtils.getStackTrace(e));
-			errors.add(new ObjectError("UserAlreadyExistException","Tên tài khoản " + dto.getUserName() + " đã tồn tại"));
+			errors.add(new ObjectError("UserAlreadyExistException","Tên tài khoản " + dto.getUsername() + " đã tồn tại"));
 		} catch (Exception e) {
 			logger.error(ExceptionUtils.getStackTrace(e));
 			errors.add(new ObjectError("OtherException", e.getMessage()));

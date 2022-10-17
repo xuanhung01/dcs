@@ -40,24 +40,6 @@
 					<form:input path="name" id="name" type="text" style="width: 50%;" required="true"/>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3">Được dùng Mobile:</label>
-				<div class="col-sm-9">
-					<form:select path="hasMobile" id="hasMobile" style="width: 100%;" cssClass="selectbox">
-						<form:option value="0" label="Không dùng"></form:option>
-						<form:option value="1" label="Có dùng" ></form:option>
-					</form:select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-3">Được dùng WEB DCS:</label>
-				<div class="col-sm-9">
-					<form:select path="hasDcs" id="hasDcs" style="width: 100%;" cssClass="selectbox">
-						<form:option value="0" label="Không dùng"></form:option>
-						<form:option value="1" label="Có dùng" ></form:option>
-					</form:select>
-				</div>
-			</div>
 		</div>
 
 		<div class="buttons">

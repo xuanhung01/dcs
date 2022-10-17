@@ -20,11 +20,11 @@ import lombok.Setter;
 public class UserAccountDto {
 	@NotNull
 	@Size(min = 6, max = 80)
-	private String userName;
+	private String username;
 
 	@NotNull
 	@Size(min = 1)
-	private String realName;
+	private String realname;
 
 	@NotNull
 	private String maTinh;
@@ -77,9 +77,9 @@ public class UserAccountDto {
 
 	private Long role;
 
-	private boolean enable;
+	private Boolean enabled;
 
-	private String parentUserName;
+	private String parentUsername;
 
 	private String teamCode;
 
@@ -93,10 +93,10 @@ public class UserAccountDto {
 	private String startChallengeDate;
 	private String endChallengeDate;
 	
-	private Boolean hasPartner;
+	private BigDecimal hasPartner;
 	
 	private String partnerName;
-	
+	@NotNull
 	private String passwordConfirm;
 	
 	private String ext;

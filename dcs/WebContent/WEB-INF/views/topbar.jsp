@@ -108,7 +108,7 @@
 		    </c:if>
 	    </c:forEach>
 		<li class="menuLogout" >
-			<a onclick="logout();" href="#" id="userName"><span style="color: black;">LOGOUT</span></a>
+			<a onclick="logout();" href="#" id="username"><span style="color: black;">LOGOUT</span></a>
 		</li>			
 	</ul>
 </nav>

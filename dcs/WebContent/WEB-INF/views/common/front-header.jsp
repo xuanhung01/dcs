@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Công ty tài chính SHB Finance</title>
+<!-- <title>Công ty tài chính SHB Finance</title> -->
 
 <jsp:include page="commoninclude.jsp" />
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">

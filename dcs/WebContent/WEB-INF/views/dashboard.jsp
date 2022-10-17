@@ -10,7 +10,7 @@
 <!-- default header name is X-CSRF-TOKEN -->
 <meta name="_csrf_header" content="${_csrf.headerName}" />
 
-<title>Công ty tài chính SHB Finance</title>
+<!-- <title>Công ty tài chính SHB Finance</title> -->
 
 <jsp:include page="common/commoninclude.jsp" />
 <jsp:include page="admininclude.jsp" />
@@ -22,16 +22,8 @@
 	<c:choose>
 		<c:when test="${formList != 'formMain'}">
 				<%-- <jsp:include page="menu.jsp" /> --%>
-			<div class="container-fluid">
-				<%-- <h4 style="color:#4c4a99;padding: 5px; background: #f6a66a;">
-					<b>Debt Collection System</b>
-					<span style="font-size: 14px" class="pull-right">
-						Mã nhân viên: <b>${operatorCode}</b>
-					</span>	
-				</h4> --%>
-				
+			<div class="container-fluid">				
 				<jsp:include page="sidebar.jsp" />
-				<%-- <jsp:include page="sidebar.jsp" /> --%>
 				<div>
 					<c:choose>
 						<c:when test="${subpage == 'system_users'}">

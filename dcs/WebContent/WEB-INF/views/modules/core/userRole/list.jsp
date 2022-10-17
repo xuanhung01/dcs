@@ -78,9 +78,9 @@
 				<ul class="list-group">
 					<c:if test="${listUserLeft !=null}">
 						<c:forEach var="row" items="${listUserLeft}" varStatus="statusItem">
-							<li class="list-group-item" id="${row.userName}">
+							<li class="list-group-item" id="${row.username}">
 								<div class="row">
-									<div class="col-md-2">${row.userName}</div>
+									<div class="col-md-2">${row.username}</div>
 								</div>
 							</li>
 						</c:forEach>
@@ -122,9 +122,9 @@
 				<ul class="list-group">
 					<c:if test="${listUserRight !=null}">
 						<c:forEach var="row" items="${listUserRight}" varStatus="statusItem">
-							<li class="list-group-item" id="${row.userName}">
+							<li class="list-group-item" id="${row.username}">
 								<div class="row">
-									<div class="col-md-2">${row.userName}</div>
+									<div class="col-md-2">${row.username}</div>
 								</div>
 							</li>
 						</c:forEach>
