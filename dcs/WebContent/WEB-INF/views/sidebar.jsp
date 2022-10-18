@@ -31,11 +31,23 @@
 						  </c:forEach>
 				        </ul>
 				  	</li>
-				  	<li class="menuLogout" >
-						 <a onclick="logout();" href="#">Đăng xuât &nbsp; <span style="color: black;"></span></a>
-					</li>
+				  </c:if>
+				  <c:if test="${itemP == 1030}">
+					<li class="dropdown-submenu">
+						<a class="test" tabindex="-1" href="#"><span>Administrator <b class="caret"></b> </span></a>
+						<ul class="dropdown-menu">				          
+				          <c:forEach items="${listMenuLeftChild}" var="itemC">
+							<c:if test="${itemC == 1031}">
+								<li><a tabindex="-1" id='submenu_1031' class="submenu" href="<c:url value="/admin/uploadCustomerLd/load"/>">Upload Customer - LD</a></li>
+							</c:if>
+						  </c:forEach>
+				        </ul>
+				  	</li>
 				  </c:if>
 	          </c:forEach>
+	          	<li class="menuLogout" >
+					 <a onclick="logout();" href="#">Đăng xuât &nbsp; <span style="color: black;"></span></a>
+				</li>
 	       </ul>
         </li>
       </ul>

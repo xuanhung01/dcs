@@ -1,0 +1,13 @@
+package com.shf.dcs.dao;
+
+import java.math.BigDecimal;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import com.shf.dcs.model.DebtUploadHdr;
+
+public interface DebtUploadHdrDAO extends JpaRepository<DebtUploadHdr, BigDecimal>{
+
+	@Query(nativeQuery=true,value="select * from DEBT_UPLOAD_HDR where trunc(sys_run_date) > trunc(sysdate) -1 and description = 'CUSTOMER_LD' order by id desc")
+	public List<DebtUploadHdr> getListFileRecase();
+}

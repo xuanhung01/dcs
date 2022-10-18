@@ -38,6 +38,9 @@
 						<c:when test="${subpage == 'system_users_privilege'}">
 							<jsp:include page="modules/core/rolePrivilege/list.jsp" />
 						</c:when>
+						<c:when test="${subpage == 'admin_upload_customerLd'}">
+							<jsp:include page="modules/admin/uploadCustomerLd.jsp" />
+						</c:when>
 						<c:when test="${subpage == 'blank'}">
 						</c:when>
 						<c:otherwise>
