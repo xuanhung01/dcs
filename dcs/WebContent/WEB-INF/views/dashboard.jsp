@@ -91,6 +91,30 @@ $(function() {
 	 /*  */
 	 $(".txtformatNumber").mask("0000000000000000", {reverse: true});
 })
+
+function is_empty(x)
+{
+    return (                                                           //don't put newline after return
+        (typeof x == 'undefined')
+              ||
+        (x == null)
+              ||
+        (x == false)        //same as: !x
+              ||
+        (x.length == 0)
+              ||
+        (x == 0)            // note this line, you might not need this. 
+              ||
+        (x == "")
+              ||
+        (x.replace(/\s/g,"") == "")
+              ||
+        (!/[^\s]/.test(x))
+              ||
+        (/^\s*$/.test(x))
+    );
+}
+
 </script>
 <style>
 

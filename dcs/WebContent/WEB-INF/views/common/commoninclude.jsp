@@ -24,7 +24,6 @@
 <link type="text/css" href="<c:url value="/resources/css/HoldOn.min.css" />" rel="stylesheet" />
 <link type="text/css" href="<c:url value="/resources/css/common.css" />" rel="stylesheet" />
 <link type="text/css" href="<c:url value="/resources/js/libs/fancyBox-v2.1.5-0/source/jquery.fancybox.css" />" rel="stylesheet" />
-<link type="text/css" href="<c:url value="/resources/js/libs/notify/bootstrap-notify.css" />" rel="stylesheet" />
 
 <script src="<c:url value="/resources/js/libs/jquery-1.11.3.js" />"></script>
 <script src="<c:url value="/resources/js/libs/jquery-ui.js" />"></script>
@@ -64,4 +63,4 @@
 <script src="<c:url value="/resources/js/viethoa.js" />"></script>
 <script src="<c:url value="/resources/js/danhmuc.js" />"></script>
 <script src="<c:url value="/resources/js/libs/SimpleFormTable.js" />"></script>
-<script src="<c:url value="/resources/js/libs/notify/bootstrap-notify.js" />"></script>
+<script src="<c:url value="/resources/js/libs/jquery-bootstrap-purr.js" />"></script>

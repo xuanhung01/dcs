@@ -832,22 +832,16 @@ CMSCommonJs.Form.showNotifier = function(currentForm) {
 
 /* show message lỗi */
 function alertError(errorMsg) {
-	$.showNotification({
-  		body:errorMsg,
-  		type:"danger",
-  		duration: 3000,
-  		direction:"append"
-	})
+	$.bootstrapPurr(errorMsg, {
+	    type:'DANGER'
+	});
 }
 
 /* show message thành công */
 function alertSuccess(inforMsg) {
-   $('#alertshowInforMsg').empty();
-   $('#alertshowInforMsg').append(inforMsg);
-   $('#alertshowInforMsg').fadeIn(1000);
-   setTimeout(function() { 
-       $('#alertshowInforMsg').fadeOut(1000); 
-   }, 3000);
+	$.bootstrapPurr(inforMsg, {
+	    type:'SUCCESS'
+	});
 }
 
 /* show message lỗi */

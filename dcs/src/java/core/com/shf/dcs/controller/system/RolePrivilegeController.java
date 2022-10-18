@@ -95,7 +95,10 @@ public class RolePrivilegeController {
 		modelAndView.addObject(Constants.LIST_PRIVILEGE, listPrivilege);
 		modelAndView.addObject("listPrivilegeLeft", listPrivilegeLeft);
 		modelAndView.addObject("listPrivilegeRight", listPrivilegeRight);
-		
+		if(request.getAttribute("message") != null) {
+			modelAndView.addObject("message","AddUserSuccess");
+			request.setAttribute("message", null);
+		}
 		return modelAndView;
 	}
 	
@@ -138,6 +141,7 @@ public class RolePrivilegeController {
 		} 
 		roleDto.setTempRole(String.valueOf(tempRole));
 		roleDto.setTempPrivilege(String.valueOf(tempPrivilege));
+		request.setAttribute("message", "AddUserSuccess");
 		modelAndView = search(roleDto, model, request);
 		return modelAndView;
 	}

@@ -25,9 +25,6 @@
 							<c:if test="${itemC == 1015}">
 								<li><a tabindex="-1" id='submenu_1015' class="submenu" href="<c:url value="/system/rolePrivilege/load"/>">Q/L phân Role - Privilege</a></li>
 							</c:if>
-							<c:if test="${itemC == 1016}">
-								<li><a tabindex="-1" id='submenu_1016' class="submenu" href="<c:url value="/system/userUpload/load"/>">Upload lô User</a></li>
-							</c:if>
 							<c:if test="${itemC == 1017}">
 								<li><a tabindex="-1" id='submenu_1017' class="submenu" href="<c:url value="/system/password/load"/>">Cài đặt mật khẩu</a></li>
 							</c:if>

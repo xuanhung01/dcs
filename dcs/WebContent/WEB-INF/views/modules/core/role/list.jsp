@@ -69,11 +69,16 @@
 			var url = "<c:url value="/system/role/view/"/>" + id;
 			window.location.href = url;
 		});
-		$(document).on("click", ".btnXoa", function(e) {
-			e.preventDefault();
-			var id = $(this).attr("id");
-			var url = "<c:url value="/system/role/remove/"/>" + id;
-			window.location.href = url;
+		$('.btnXoa').bootstrap_confirm_delete({
+			  heading: 'Remove Role',
+			  message: 'Bạn có thực sự muốn xóa bản ghi?',
+			  data_type: $(this).attr("username"),
+			  callback: function( event ){
+				  var id = event.data.originalObject.attr("id");
+				  var url = "<c:url value="/system/role/remove/"/>" + id;
+				  window.location.href = url;
+			  }
 		});
+		
 	});
 </script>

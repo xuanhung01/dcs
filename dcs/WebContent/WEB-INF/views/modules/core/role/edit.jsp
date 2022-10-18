@@ -10,40 +10,17 @@
 	<h4 class="widgettitle">Chỉnh sửa thông tin role</h4>
 	<div class="widgetcontent">
 		<div>
-			<c:if test="${formMode == 'create' || formMode == 'edit' }">
-				<div id="SendDialog" title="Xác nhận chỉnh sửa nhóm">
-					<p>
-						<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Bạn có thực sự muốn chỉnh sửa nhóm?
-					</p>
-				</div>
-			</c:if>
-			<c:if test="${listErrors !=null}">
-				<div class="section">
-					<h4>Lỗi:</h4>
-					<c:forEach var="row" items="${listErrors}" varStatus="statusItem">
-						<div class="error">
-							<c:choose>
-								<c:when test="${row.objectName == 'UserAlreadyExist' }">Role đã tồn tại. Mời chọn tên khác</c:when>
-								<c:otherwise>Có lỗi xảy ra. Yêu cầu kiểm tra lại thông tin! <br>
-									<p>${row.objectName}${row.defaultMessage}</p>
-									<p>${row.toString()}</p>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</c:forEach>
-				</div>
-			</c:if>
 			<h4>Thông tin role</h4>
 			<div class="form-group">
-				<label class="control-label col-sm-3">Mã role:</label>
+				<label class="control-label col-sm-2">Mã role:</label>
 				<div class="col-sm-6">
-					<form:input path="id" id="id" type="text" style="width: 30%;" readonly="true" disabled="true"/>
+					<form:input path="id" id="id" type="text" style="width: 30%;" readonly="true" disabled="true" cssClass="form-control"/>
 				</div>
 			</div>
 			<div class="form-group required">
-				<label class="control-label col-sm-3">Tên role:</label>
+				<label class="control-label col-sm-2">Tên role:</label>
 				<div class="col-sm-9">
-					<form:input path="name" id="name" type="text" style="width: 50%;" required="true" />
+					<form:input path="name" id="name" type="text" style="width: 50%;" required="true" cssClass="form-control"/>
 				</div>
 			</div>
 		</div>

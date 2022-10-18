@@ -9,42 +9,29 @@
 	<h4 class="widgettitle">Cập nhật Mật khẩu</h4>
 	<div class="widgetcontent">
 		<div>
-			<c:if test="${listErrors !=null}">
-				<div class="section">
-					<h4>Lỗi:</h4>
-					<c:forEach var="row" items="${listErrors}" varStatus="statusItem">
-						<div class="error">
-							<c:choose>
-								<c:when test="${row.defaultMessage == 'UserAlreadyExist' }">Người dùng hoặc email đã tồn tại. Mời chọn tên khác</c:when>
-								<c:otherwise>Có lỗi xảy ra. Yêu cầu kiểm tra lại thông tin!</c:otherwise>
-							</c:choose>
-						</div>
-					</c:forEach>
-				</div>
-			</c:if>
-			<c:if test="${message != null}">
-				<div class="alert-success fade in">
-					<h4>Mật khẩu đã được cập nhật thành công.</h4>
-				</div>
-			</c:if>
 			<div class="alert alert-danger" id="alertshowErrorMsg" style="display:none;"></div>
 			<h4>Thông tin người dùng</h4>
 			<div class="form-group">
-				<label class="control-label col-sm-3">Tên tài khoản:</label>
-				<div class="col-sm-9">
-					<form:input path="username" id="username" type="text" style="width: 50%;" readonly="true"/>
+				<label class="control-label col-sm-2">Tên tài khoản:</label>
+				<div class="col-sm-5">
+					<form:input path="username" id="username" type="text" cssClass="form-control" readonly="true"/>
 				</div>
 			</div>
 			<div class="form-group required">
-				<label class="control-label col-sm-3">Mật khẩu:</label>
-				<div class="col-sm-9">
-					<form:input path="password" name="password" id="password" type="password" style="width: 50%;" required="true" data-rule-minlength="6"/>
+				<label class="control-label col-sm-2">Mật khẩu:</label>
+				<div class="col-sm-5">
+					<form:input path="password" id="password" type="password" data-toggle="password" cssClass="form-control pwd" maxlength="100" data-rule-minlength="6"/>
+				</div>
+				<div class="col-sm-1">
+					<span class="input-group-btn">
+			        	<button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
+			        </span>
 				</div>
 			</div>
 			<div class="form-group required">
-				<label class="control-label col-sm-3">Nhập lại mật khẩu:</label>
-				<div class="col-sm-9">
-					<form:input path="passwordConfirm" name="passwordConfirm" id="passwordConfirm" type="password" style="width: 50%;" required="true" data-rule-equalTo="#password"/>
+				<label class="control-label col-sm-2">Nhập lại mật khẩu:</label>
+				<div class="col-sm-5">
+					<form:input path="passwordConfirm" id="passwordConfirm" data-toggle="password" cssClass="form-control pwd" type="password" maxlength="100" data-rule-equalTo="#password"/>
 				</div>
 			</div>
 		</div>
@@ -55,3 +42,19 @@
 	</div>
 </form:form>
 <script src="<c:url value="/resources/js/pages/forms/register.js" />"></script>
+<script>
+	$(function() {
+		// check error
+		var listErrors = "${listErrors}";
+		if(!is_empty(listErrors)){
+			<c:forEach var="error" items="${listErrors}" varStatus="status">
+				alertError("${error.defaultMessage}"); 
+			</c:forEach>
+		}
+		// check infor
+		var message = "${message}";
+		if(!is_empty(message)){
+			alertSuccess("Bạn đã tạo mới người dùng thành công!");
+		}
+	})
+</script>

@@ -89,7 +89,10 @@ public class UserRoleController {
 		modelAndView.addObject(Constants.LIST_ROLE, listRole);
 		modelAndView.addObject("listUserLeft", listUserLeft);
 		modelAndView.addObject("listUserRight", listUserRight);
-		
+		if(request.getAttribute("message") != null) {
+			modelAndView.addObject("message","AddUserSuccess");
+			request.setAttribute("message", null);
+		}
 		return modelAndView;
 	}
 	
@@ -132,6 +135,7 @@ public class UserRoleController {
 			return modelAndView;
 		} 
 		roleDto.setTempRole(String.valueOf(tempRole));
+		request.setAttribute("message", "AddUserSuccess");
 		modelAndView = search(roleDto, model, request);
 		return modelAndView;
 	}

@@ -9,35 +9,12 @@
 <form:form modelAttribute="formModel" id="editProfileForm" class="form-horizontal" formMode="create" action="${addFormSubmitUrl}" method="POST">
 	<h4 class="widgettitle">Tạo mới role</h4>
 	<div class="widgetcontent">
-		<c:if test="${formMode == 'create' || formMode == 'edit' }">
-			<div id="SendDialog" title="Xác nhận tạo mới nhóm">
-				<p>
-					<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Bạn có thực sự muốn tạo mới nhóm?
-				</p>
-			</div>
-		</c:if>
 		<div>
-			<c:if test="${listErrors !=null}">
-				<div class="section">
-					<h4>Lỗi:</h4>
-					<c:forEach var="row" items="${listErrors}" varStatus="statusItem">
-						<div class="error">
-							<c:choose>
-								<c:when test="${row.objectName == 'UserAlreadyExist' }">Id đã tồn tại. Mời chọn id khác</c:when>
-								<c:when test="${row.objectName == 'DataError' }">Lỗi dữ liệu ${row.defaultMessage}</c:when>
-								<c:otherwise>Có lỗi xảy ra. Yêu cầu kiểm tra lại thông tin! <br>
-									<p>${row.defaultMessage}</p>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</c:forEach>
-				</div>
-			</c:if>
 			<h4>Thông tin role</h4>
 			<div class="form-group required">
-				<label class="control-label col-sm-3">Tên role:</label>
-				<div class="col-sm-9">
-					<form:input path="name" id="name" type="text" style="width: 50%;" required="true"/>
+				<label class="control-label col-sm-2">Tên role:</label>
+				<div class="col-sm-5">
+					<form:input path="name" id="name" type="text" cssClass="form-control" style="width: 50%;" required="true"/>
 				</div>
 			</div>
 		</div>

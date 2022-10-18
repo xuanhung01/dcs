@@ -10,23 +10,6 @@
 	<h4 class="widgettitle">Chỉnh sửa thông tin người dùng</h4>
 	<div class="widgetcontent">
 		<div>
-			<c:if test="${listErrors !=null}">
-				<div class="section">
-					<h4>Lỗi:</h4>
-					<c:forEach var="row" items="${listErrors}" varStatus="statusItem">
-						<div class="error">
-							<c:choose>
-								<c:when test="${row.objectName == 'UserAlreadyExist' }">Người dùng hoặc email đã tồn tại. Mời chọn tên khác</c:when>
-								<c:when test="${row.objectName == 'DataError' }">Lỗi dữ liệu ${row.defaultMessage}</c:when>
-								<c:otherwise>Có lỗi xảy ra. Yêu cầu kiểm tra lại thông tin! <br>
-									<p>${row.defaultMessage}</p>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</c:forEach>
-				</div>
-			</c:if>
-			<div class="alert alert-danger" id="alertshowErrorMsg" style="display:none;"></div>
 			<h4>Thông tin người dùng</h4>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Tên tài khoản:</label>
@@ -96,15 +79,17 @@ var arrAllPartner = [];
 		groupCode : "${row.groupCode}"
 	});
 </c:forEach>
-/* Lấy danh sách Parter */
-<c:forEach var="row" items="${listDebtPartner}" varStatus="statusItem">
-	arrAllPartner.push({
-		'id' : "${row.partnerCode}",
-		'text' : "${row.partnerCode}"
-	});
-</c:forEach>
 
 $(function() {
+	// check error
+	var listErrors = "${listErrors}";
+	if(!is_empty(listErrors)){
+		<c:forEach var="error" items="${listErrors}" varStatus="status">
+			alertError("${error.defaultMessage}"); 
+		</c:forEach>
+	}
+	//
+	
 	if($('#groupId').val() != ''){
 		var groupCode = null;
 		$.each(arrAllGroup, function( index, value ) {

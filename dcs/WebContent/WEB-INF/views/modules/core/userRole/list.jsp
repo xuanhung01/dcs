@@ -7,21 +7,6 @@
 
 <spring:url value="/system/userRole/search?${_csrf.parameterName}=${_csrf.token}" var="searchSubmitUrl" />
 
-<c:if test="${listErrors !=null}">
-	<div class="section">
-		<h4>Lỗi:</h4>
-		<c:forEach var="row" items="${listErrors}" varStatus="statusItem">
-			<div class="error">
-				<c:choose>
-					<c:when test="${row.objectName == 'InvalidMaTinh' }">Mã tỉnh không tồn tại!</c:when>
-					<c:otherwise>Có lỗi xảy ra. Yêu cầu kiểm tra lại thông tin!</c:otherwise>
-				</c:choose>
-			</div>
-		</c:forEach>
-	</div>
-</c:if>
-
-
 <h4 class="widgettitle">
 	Quản lý phân role người dùng<span id="help1"></span>
 </h4>
@@ -136,6 +121,12 @@
 </div>
 <script type="text/javascript">
 	$(function() {
+		// check infor
+		var message = "${message}";
+		if(!is_empty(message)){
+			alertSuccess("Bạn đã phân thành công!");
+		}
+		//
 		var table = $("#DataTables_UserRole").DataTable({
 			"language" : DATA_TABLE_LANG_VI,
 			"bSort" : true

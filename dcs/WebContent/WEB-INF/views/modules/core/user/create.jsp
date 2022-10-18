@@ -9,36 +9,7 @@
 <form:form modelAttribute="formModel" id="editProfileForm" class="form-horizontal" formMode="create" action="${addFormSubmitUrl}" method="POST">
 	<h4 class="widgettitle">Tạo mới người dùng</h4>
 	<div class="widgetcontent" style="align-content: center;">
-		<c:if test="${formMode == 'create' || formMode == 'edit' }">
-			<div id="SendDialog" title="Xác nhận tạo mới tài khoản">
-				<p>
-					<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Bạn có thực sự muốn tạo mới tài khoản?
-				</p>
-			</div>
-		</c:if>
 		<div>
-			<c:if test="${listErrors !=null}">
-				<div class="section">
-					<h4>Lỗi:</h4>
-					<c:forEach var="row" items="${listErrors}" varStatus="statusItem">
-						<div class="error">
-							<c:choose>
-								<c:when test="${row.objectName == 'UserAlreadyExist' }">Người dùng đã tồn tại. Mời chọn tên khác</c:when>
-								<c:when test="${row.objectName == 'DataError' }">Lỗi dữ liệu ${row.defaultMessage}</c:when>
-								<c:otherwise>Có lỗi xảy ra. Yêu cầu kiểm tra lại thông tin! <br>
-									<p>${row.defaultMessage}</p>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</c:forEach>
-				</div>
-			</c:if>
-			<c:if test="${message !=null}">
-				<div class="success">
-					<p>Bạn đã tạo mới người dùng thành công!</p>
-				</div>
-			</c:if>
-			<div class="alert alert-danger" id="alertshowErrorMsg" style="display:none;"></div>
 			<h4>Thông tin người dùng</h4>
 			<div class="form-group required">
 				<label class="control-label col-sm-2">Tên tài khoản:</label>
@@ -65,7 +36,7 @@
 			<div class="form-group required">
 				<label class="control-label col-sm-2">Mật khẩu:</label>
 				<div class="col-sm-5">
-					<form:input path="password" id="password" type="password" data-toggle="password" cssClass="form-control pwd" maxlength="100" data-rule-minlength="6"/>
+					<form:input path="password" id="password" type="password" data-toggle="password" cssClass="form-control pwd" maxlength="100" data-rule-minlength="6" value="Abc@12345"/>
 				</div>
 				<div class="col-sm-1">
 					<span class="input-group-btn">
@@ -76,7 +47,7 @@
 			<div class="form-group required">
 				<label class="control-label col-sm-2">Nhập lại mật khẩu:</label>
 				<div class="col-sm-5">
-					<form:input path="passwordConfirm" id="passwordConfirm" data-toggle="password" cssClass="form-control pwd" type="password" maxlength="100" data-rule-equalTo="#password"/>
+					<form:input path="passwordConfirm" id="passwordConfirm" data-toggle="password" cssClass="form-control pwd" type="password" maxlength="100" data-rule-equalTo="#password" value="Abc@12345"/>
 				</div>
 			</div>
 		</div>
@@ -111,15 +82,20 @@ var arrAllPartner = [];
 	});
 </c:forEach>
 
-/* Lấy danh sách Parter */
-<c:forEach var="row" items="${listDebtPartner}" varStatus="statusItem">
-	arrAllPartner.push({
-		'id' : "${row.partnerCode}",
-		'text' : "${row.partnerCode}"
-	});
-</c:forEach>
-
-$(function() {	
+$(function() {
+	// check error
+	var listErrors = "${listErrors}";
+	if(!is_empty(listErrors)){
+		<c:forEach var="error" items="${listErrors}" varStatus="status">
+			alertError("${error.defaultMessage}"); 
+		</c:forEach>
+	}
+	// check infor
+	var message = "${message}";
+	if(!is_empty(message)){
+		alertSuccess("Bạn đã tạo mới người dùng thành công!");
+	}
+	//
 	if($('#groupId').val() != ''){
 		var groupCode = null;
 		$.each(arrAllGroup, function( index, value ) {
@@ -225,11 +201,6 @@ $(function() {
 			alertError('Mật khẩu và nhập lại chưa trùng khớp');
 			return false;
 		}
-		if($.trim($("#partnerName").select2("val")) == ''){
-			alertError('Mô tả đối tác bạn chưa nhập');
-			return false;
-		}
-		
 	});
 })
 
