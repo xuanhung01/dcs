@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>dcs</groupId>
-	<artifactId>dcs</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<properties>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>dcs</groupId>
+  <artifactId>dcs</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <properties>
 		<org.springframework.security.version>5.1.1.RELEASE</org.springframework.security.version>
 		<org.springframework-version>5.1.1.RELEASE</org.springframework-version>
 		<org.springboot.version>2.0.2.RELEASE</org.springboot.version>
@@ -16,11 +16,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<artifactId>validation-api</artifactId>
-			<groupId>javax.validation</groupId>
-			<version>2.0.1.Final</version>
-		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -115,6 +110,12 @@
 			<artifactId>jaxrpc-api</artifactId>
 			<version>1.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
 		<!-- Password Validation -->
 		<dependency>
 			<groupId>org.passay</groupId>
@@ -195,11 +196,11 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
 		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-			<version>2.7.9</version>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>2.7.9</version>
 		</dependency>
-
+		
 	</dependencies>
 
 	<build>
