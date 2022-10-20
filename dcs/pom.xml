@@ -7,9 +7,9 @@
   <properties>
 		<org.springframework.security.version>5.1.1.RELEASE</org.springframework.security.version>
 		<org.springframework-version>5.1.1.RELEASE</org.springframework-version>
-		<org.springboot.version>2.0.2.RELEASE</org.springboot.version>
+		<org.springboot.version>2.1.0.RELEASE</org.springboot.version>
 		<spring-data-jpa.version>2.1.0.RELEASE</spring-data-jpa.version>
-		<hibernate.version>4.3.11.Final</hibernate.version>
+		<hibernate.version>5.4.3.Final</hibernate.version>
 		<apache.poi.version>3.17</apache.poi.version>
 		<guava.version>18.0</guava.version>
 		<oauth.version>2.3.5.RELEASE</oauth.version>
@@ -59,6 +59,11 @@
 			<artifactId>spring-boot</artifactId>
 			<version>${org.springboot.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-validation</artifactId>
+		    <version>${org.springboot.version}</version>
+		</dependency>
 		<!-- Spring Data JPA dependencies -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -69,6 +74,11 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-fileupload</groupId>

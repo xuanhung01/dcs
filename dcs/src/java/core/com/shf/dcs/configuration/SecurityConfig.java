@@ -149,7 +149,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationFilter.setAuthenticationManager(authenticationManagerBean());
         authenticationFilter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error=true"));
         authenticationFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler());
-        authenticationFilter.setSessionAuthenticationStrategy(sessionAuthenticationStrategy());
 
         return authenticationFilter;
     }
@@ -177,19 +176,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return myAuthenticationSuccessHandler;
     }
-
-    @Bean
-    public SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-        return new CompositeSessionAuthenticationStrategy(Arrays.asList(
-            new ChangeSessionIdAuthenticationStrategy()/*,
-            new CsrfAuthenticationStrategy(csrfTokenRepository())*/
-        ));
-    }
-
-    /*@Bean
-    public CsrfTokenRepository csrfTokenRepository() {
-        return new LazyCsrfTokenRepository(new HttpSessionCsrfTokenRepository());
-    }*/
 	
     @Bean
     public ObjectMapper objectMapper() {

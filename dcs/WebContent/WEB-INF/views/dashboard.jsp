@@ -24,7 +24,7 @@
 				<%-- <jsp:include page="menu.jsp" /> --%>
 			<div class="container-fluid">				
 				<jsp:include page="sidebar.jsp" />
-				<div>
+				<div style="padding-left:256px">
 					<c:choose>
 						<c:when test="${subpage == 'system_users'}">
 							<jsp:include page="modules/core/users.jsp" />
@@ -68,6 +68,18 @@
 <script>
 var username = '${operatorCode}';
 $(function() {
+	// check error
+	var listErrors = "${listErrors}";
+	if(!is_empty(listErrors)){
+		<c:forEach var="error" items="${listErrors}" varStatus="status">
+			alertError("${error.defaultMessage}"); 
+		</c:forEach>
+	}
+	// check infor
+	var message = "${message}";
+	if(!is_empty(message)){
+		alertSuccess("Bạn đã tạo mới người dùng thành công!");
+	}
 	/*  */
 	 $(".txtformatDt").datepicker({
 		 minDate: 0

@@ -81,15 +81,6 @@ var arrAllPartner = [];
 </c:forEach>
 
 $(function() {
-	// check error
-	var listErrors = "${listErrors}";
-	if(!is_empty(listErrors)){
-		<c:forEach var="error" items="${listErrors}" varStatus="status">
-			alertError("${error.defaultMessage}"); 
-		</c:forEach>
-	}
-	//
-	
 	if($('#groupId').val() != ''){
 		var groupCode = null;
 		$.each(arrAllGroup, function( index, value ) {

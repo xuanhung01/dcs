@@ -25,7 +25,7 @@ public class VerifyUtils {
 
 			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url).queryParam("secret", secret)
 					.queryParam("response", captchaToken);
-			HttpEntity<String> entity = new HttpEntity<>(headers);
+			HttpEntity<String> entity = new HttpEntity<String>(headers);
 
 			ResponseEntity<RecaptchaResponse> response = restTemplate.exchange(builder.build().encode().toUri(),
 					HttpMethod.GET, entity, RecaptchaResponse.class);

@@ -83,18 +83,6 @@ var arrAllPartner = [];
 </c:forEach>
 
 $(function() {
-	// check error
-	var listErrors = "${listErrors}";
-	if(!is_empty(listErrors)){
-		<c:forEach var="error" items="${listErrors}" varStatus="status">
-			alertError("${error.defaultMessage}"); 
-		</c:forEach>
-	}
-	// check infor
-	var message = "${message}";
-	if(!is_empty(message)){
-		alertSuccess("Bạn đã tạo mới người dùng thành công!");
-	}
 	//
 	if($('#groupId').val() != ''){
 		var groupCode = null;

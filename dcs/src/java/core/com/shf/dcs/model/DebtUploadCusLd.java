@@ -2,7 +2,9 @@ package com.shf.dcs.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,9 +24,12 @@ public class DebtUploadCusLd implements Serializable {
 	private BigDecimal id;
 	
 	@Column(name = "SO_HOP_DONG")
+	@NotNull
+	@Max(value = 10)
 	private String soHopDong;
 
 	@Column(name = "CHI_TIET_LS_TAC_DONG")
+	@NotNull
 	private String chiTietLsTacDong;
 
 	@Column(name = "CHUC_VU")

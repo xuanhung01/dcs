@@ -392,7 +392,7 @@
         align: 'right', // ('left', 'right', 'center')
 
         // With of the alert. The default is 250px, which is the same as Bootstrap's alerts
-        width: 250, // (number, 'auto')
+        width: 400, // (number, 'auto')
 
         // If true then a cross will be displayed in the top right hand corner of the alert
         allowDismiss: true, // (true, false)
@@ -414,7 +414,7 @@
         },
 
         // Delay for 'on fade out' in milliseconds
-        delay: 3000, // (number)
+        delay: 5000, // (number)
 
         // Pause the delay when hovering over the alert
         delayPause: false, // (true, false)

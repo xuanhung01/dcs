@@ -126,11 +126,6 @@
 	var csrfToken = $("meta[name='_csrf']").attr("content");
 	
 	$(function() {
-		// check infor
-		var message = "${message}";
-		if(!is_empty(message)){
-			alertSuccess("Bạn đã phân thành công!");
-		}
 		//
 		var table = $("#DataTables_UserRole").DataTable({
 			"language" : DATA_TABLE_LANG_VI,

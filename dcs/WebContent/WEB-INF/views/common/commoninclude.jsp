@@ -64,3 +64,6 @@
 <script src="<c:url value="/resources/js/danhmuc.js" />"></script>
 <script src="<c:url value="/resources/js/libs/SimpleFormTable.js" />"></script>
 <script src="<c:url value="/resources/js/libs/jquery-bootstrap-purr.js" />"></script>
+<%-- Left Menu --%>
+<script src="<c:url value="/resources/js/libs/bs_leftnavi/bs_leftnavi.js" />"></script>
+<link type="text/css" href="<c:url value="/resources/js/libs/bs_leftnavi/bs_leftnavi.css" />" rel="stylesheet" />

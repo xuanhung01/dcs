@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
@@ -20,11 +21,16 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import com.shf.dcs.dao.DebtUploadCusLdDAO;
 import com.shf.dcs.dto.AdminUploadDto;
 import com.shf.dcs.dto.DebtUploadCusLdDto;
+import com.shf.dcs.error.UploadException;
 import com.shf.dcs.model.DebtUploadCusLd;
 import com.shf.dcs.service.IUploadCustomerLdService;
 import com.shf.dcs.utils.Constants;
@@ -36,17 +42,14 @@ import org.apache.log4j.Logger;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
-public class UploadCustomerLdService implements IUploadCustomerLdService{
+public class UploadCustomerLdService extends ServiceGenericImpl<DebtUploadCusLd> implements IUploadCustomerLdService{
 	private static Logger logger = Logger.getLogger(UploadCustomerLdService.class);
-	
-	@Autowired
-	DebtUploadCusLdDAO debtUploadCusLdDAO;
 
 	@Override
-	public void save(AdminUploadDto dto) throws Exception {
+	public void save(AdminUploadDto dto) throws UploadException,Exception {
 		List<DebtUploadCusLdDto> listUploadResultDebtHomeDto = new ArrayList<DebtUploadCusLdDto>();
 		DataFormatter dataFormatter = new DataFormatter();
-		int rowNum = 0;
+		Integer rowNum = 0;
 		String tempStrCell = "";
 		// valid file
 		try {
@@ -73,24 +76,26 @@ public class UploadCustomerLdService implements IUploadCustomerLdService{
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
 					tempStrCell = dataFormatter.formatCellValue(cell);
-					// bỏ trắng
+					// 
 					if(StringUtils.isNotEmpty(tempStrCell)) {
 						tempStrCell = tempStrCell.trim();
 					}
-					// So hợp đồng
+					// Số hợp đồng
 					if (cell.getColumnIndex() == 0) {
-	                	debtUploadCusLdDto.setSoHopDong(null);
+	                	debtUploadCusLdDto.setSoHopDong("12345678901234");
 					} 
-					
-					ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-			        Validator validator = factory.getValidator();
-			        Set<ConstraintViolation<DebtUploadCusLdDto>> constraintViolations = validator.validate(debtUploadCusLdDto);
-
-					
+					debtUploadCusLdDto.setChiTietLsTacDong(null);
 					BeanUtils.copyProperties(debtUploadCusLdDto, debtUploadCusLd);
+					Set<ConstraintViolation<DebtUploadCusLd>> violations = validator.validate(debtUploadCusLd);
+					if(!violations.isEmpty()) {
+						throw new UploadException (getMessage(rowNum, violations));
+					}
+					
 					debtUploadCusLdDAO.save(debtUploadCusLd);
 				}
 			}
+		} catch (UploadException e) {
+			throw e;
 		} catch (Exception e) {
 			logger.error(ExceptionUtils.getMessage(e));
 			throw e;

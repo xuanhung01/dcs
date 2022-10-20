@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.shf.dcs.dto.AdminUploadDto;
+import com.shf.dcs.error.UploadException;
 import com.shf.dcs.model.DebtUploadHdr;
 import com.shf.dcs.service.IUploadCustomerLdService;
 import com.shf.dcs.service.IUploadService;
@@ -62,16 +66,18 @@ public class UploadCustomerLdController {
 	public String addUser(@ModelAttribute AdminUploadDto dto, BindingResult bindingResult, Model model,
 			HttpServletRequest request, HttpSession httpSession) throws Exception {
 		List<ObjectError> listErrors = new ArrayList<ObjectError>();
-		ObjectError error = null;
 		try {
 			dto.setUserNameUpload(userService.getLoggedUserName());
 			uploadCustomerLdService.save(dto);
 			model.addAttribute("information", "Bạn đã Lưu thông tin thành công.");
 			List<DebtUploadHdr> listDebtUploadHdr = uploadService.getListFileRecase();
 			request.getSession().setAttribute("listDebtUploadHdr", listDebtUploadHdr);
+		} catch (UploadException e) {
+			logger.error(ExceptionUtils.getStackTrace(e));
+			model.addAttribute("listErrors", e.getListErrors());
 		} catch (Exception e) {
 			logger.error(ExceptionUtils.getStackTrace(e));
-			listErrors.add(error);
+			listErrors.add(new ObjectError("OtherException", e.getMessage()));
 			model.addAttribute("listErrors", listErrors);
 		}
 		model.addAttribute("subpage", "admin_upload_customerLd");

@@ -43,7 +43,7 @@ public class RolePrivilegeController {
 	// -----------------------------------------------------------------------
 	
 	@RequestMapping(value = "/load")
-	public ModelAndView users(Model model, HttpServletRequest request) {
+	public ModelAndView users(Model model, HttpServletRequest request) throws Exception{
 		userService.addUserInfo(model, request);
 		ModelAndView modelAndView = new ModelAndView(Constants.URL_DASH_BOARD);
 		/*userService.addUserInfo(model, request);
@@ -58,7 +58,7 @@ public class RolePrivilegeController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView search(
 			@ModelAttribute RoleDto roleDto, Model model,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws Exception{
 		ModelAndView modelAndView = new ModelAndView(Constants.URL_DASH_BOARD);
 		List<DebtUserRole> listRole = new ArrayList<DebtUserRole>();
 		List<DebtUserPrivilege> listPrivilegeRight = new ArrayList<DebtUserPrivilege>();
@@ -108,7 +108,7 @@ public class RolePrivilegeController {
 			@PathVariable("tempRole") long tempRole,
 			@PathVariable("tempPrivilege") long tempPrivilege,
 			Model model,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws Exception {
 		List<ObjectError> errors = new ArrayList<ObjectError>();
 		ModelAndView modelAndView = new ModelAndView(Constants.URL_DASH_BOARD);
 		List<String> listUser = new ArrayList<String>();
