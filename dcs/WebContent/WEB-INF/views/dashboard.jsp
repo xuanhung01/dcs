@@ -75,10 +75,15 @@ $(function() {
 			alertError("${error.defaultMessage}"); 
 		</c:forEach>
 	}
-	// check infor
+	// check message
 	var message = "${message}";
 	if(!is_empty(message)){
-		alertSuccess("Bạn đã tạo mới người dùng thành công!");
+		alertSuccess("Bạn đã tạo mới thành công!");
+	}
+	// check message
+	var information = "${information}";
+	if(!is_empty(information)){
+		alertSuccess(information);
 	}
 	/*  */
 	 $(".txtformatDt").datepicker({

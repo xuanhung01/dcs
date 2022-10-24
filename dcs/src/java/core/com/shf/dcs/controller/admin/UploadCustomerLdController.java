@@ -69,7 +69,7 @@ public class UploadCustomerLdController {
 		try {
 			dto.setUserNameUpload(userService.getLoggedUserName());
 			uploadCustomerLdService.save(dto);
-			model.addAttribute("information", "Bạn đã Lưu thông tin thành công.");
+			model.addAttribute("information", "Bạn đã Lưu thông tin thành công!");
 			List<DebtUploadHdr> listDebtUploadHdr = uploadService.getListFileRecase();
 			request.getSession().setAttribute("listDebtUploadHdr", listDebtUploadHdr);
 		} catch (UploadException e) {

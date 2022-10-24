@@ -8,8 +8,8 @@
       <ul class="gw-nav gw-nav-list">
           <c:forEach items="${listMenuLeftParent}" var="itemP">
 	          <c:if test="${itemP == 1010}">
-				<li class="arrow-down"> <a href="javascript:void(0)"> <span class="gw-menu-text">Quản lý hệ thống</span> <b class="gw-arrow"></b> </a>
-					<ul class="gw-submenu" style="display: none;">				          
+				<li class="arrow-up active"> <a href="javascript:void(0)"> <span class="gw-menu-text">Quản lý hệ thống</span> <b class="gw-arrow"></b> </a>
+					<ul class="gw-submenu" style="display: block;">				          
 			          <c:forEach items="${listMenuLeftChild}" var="itemC">
 						<c:if test="${itemC == 1011}">
 							<li><a tabindex="-1" id='submenu_1011' class="submenu" href="<c:url value="/system/user/load"/>">Q/L người dùng</a></li>
@@ -31,8 +31,8 @@
 			  	</li>
 			  </c:if>
 			  <c:if test="${itemP == 1030}">
-				<li class="arrow-down"> <a href="javascript:void(0)"> <span class="gw-menu-text">Administrator</span> <b class="gw-arrow"></b> </a>
-					<ul class="gw-submenu" style="display: none;">				          
+				<li class="arrow-up active"> <a href="javascript:void(0)"> <span class="gw-menu-text">Administrator</span> <b class="gw-arrow"></b> </a>
+					<ul class="gw-submenu" style="display: block;">				          
 			          <c:forEach items="${listMenuLeftChild}" var="itemC">
 						<c:if test="${itemC == 1031}">
 							<li><a tabindex="-1" id='submenu_1031' class="submenu" href="<c:url value="/admin/uploadCustomerLd/load"/>">Upload Customer - LD</a></li>

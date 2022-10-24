@@ -22,36 +22,46 @@ public class DebtUploadCusLd implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DEBT_UPLOAD_CUS_LD_SEQ")
 	@SequenceGenerator(name = "DEBT_UPLOAD_CUS_LD_SEQ", sequenceName = "DEBT_UPLOAD_CUS_LD_SEQ", allocationSize = 1)
 	private BigDecimal id;
-	
+
 	@Column(name = "SO_HOP_DONG")
 	@NotNull
-	@Max(value = 10)
+	@Size(max = 20)
 	private String soHopDong;
 
+	@Size(max = 400)
 	@Column(name = "CHI_TIET_LS_TAC_DONG")
-	@NotNull
 	private String chiTietLsTacDong;
 
+	@Size(max = 70)
 	@Column(name = "CHUC_VU")
 	private String chucVu;
 
+	@NotNull
+	@Size(max = 50)
 	private String cif;
 
+	@NotNull
+	@Size(max = 40)
 	@Column(name = "CMND_CCCD")
 	private String cmndCccd;
 
+	@Size(max = 400)
 	@Column(name = "DIA_CHI_CONG_TY")
 	private String diaChiCongTy;
 
+	@Size(max = 400)
 	@Column(name = "DIA_CHI_TAM_TRU")
 	private String diaChiTamTru;
 
+	@Size(max = 400)
 	@Column(name = "DIA_CHI_THUONG_TRU")
 	private String diaChiThuongTru;
 
+	@Size(max = 20)
 	@Column(name = "DIEN_THOAI_CONG_TY")
 	private String dienThoaiCongTy;
 
+	@Size(max = 70)
 	@Column(name = "DOI_TAC")
 	private String doiTac;
 
@@ -72,6 +82,7 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "ERR_MSG")
 	private String errMsg;
 
+	@Size(max = 10)
 	@Column(name = "GIOI_TINH")
 	private String gioiTinh;
 
@@ -81,17 +92,25 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "GOC_QUA_HAN")
 	private BigDecimal gocQuaHan;
 
+	@Size(max = 150)
 	@Column(name = "HINH_THUC_NHAN_LUONG")
 	private String hinhThucNhanLuong;
 
+	@Size(max = 150)
 	@Column(name = "HO_VA_TEN_1")
 	private String hoVaTen1;
 
+	@Size(max = 150)
 	@Column(name = "HO_VA_TEN_2")
 	private String hoVaTen2;
 
+	@Size(max = 150)
 	@Column(name = "HO_VA_TEN_3")
 	private String hoVaTen3;
+
+	@Size(max = 150)
+	@Column(name = "HO_VA_TEN_4")
+	private String hoVaTen4;
 
 	@Column(name = "KY_TRA_NO_HIEN_TAI")
 	private BigDecimal kyTraNoHienTai;
@@ -118,24 +137,35 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "LOAD_FLAG")
 	private BigDecimal loadFlag;
 
+	@Size(max = 50)
 	@Column(name = "LS_TAC_DONG_GAN_NHAT")
 	private String lsTacDongGanNhat;
 
+	@Size(max = 50)
 	@Column(name = "MA_SAN_PHAM")
 	private String maSanPham;
 
+	@Size(max = 150)
 	@Column(name = "MOI_QH_VOI_KHACH_HANG_1")
 	private String moiQhVoiKhachHang1;
 
+	@Size(max = 150)
 	@Column(name = "MOI_QH_VOI_KHACH_HANG_2")
 	private String moiQhVoiKhachHang2;
 
+	@Size(max = 150)
 	@Column(name = "MOI_QH_VOI_KHACH_HANG_3")
 	private String moiQhVoiKhachHang3;
 
+	@Size(max = 150)
+	@Column(name = "MOI_QH_VOI_KHACH_HANG_4")
+	private String moiQhVoiKhachHang4;
+
+	@Size(max = 150)
 	@Column(name = "MUC_DICH_VAY")
 	private String mucDichVay;
 
+	@Size(max = 150)
 	@Column(name = "NGANH_NGHE")
 	private String nganhNghe;
 
@@ -159,9 +189,9 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "NGAY_GIAI_NGAN")
 	private Date ngayGiaiNgan;
 
-	@Temporal(TemporalType.DATE)
+	@Size(max = 150)
 	@Column(name = "NGAY_NHAN_LUONG")
-	private Date ngayNhanLuong;
+	private String ngayNhanLuong;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "NGAY_SINH")
@@ -179,48 +209,66 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "NGAY_TRA_NO_KY_TIEP_THEO")
 	private Date ngayTraNoKyTiepTheo;
 
+	@Size(max = 150)
 	@Column(name = "NGHE_NGHIEP")
 	private String ngheNghiep;
 
+	@Size(max = 150)
 	@Column(name = "NGUON_THU_NHAP")
 	private String nguonThuNhap;
 
+	@Size(max = 150)
 	@Column(name = "NHAN_VIEN_PHU_TRACH")
 	private String nhanVienPhuTrach;
 
+	@Size(max = 10)
 	@Column(name = "NHOM_DPD")
 	private String nhomDpd;
 
+	@Size(max = 50)
 	@Column(name = "NHOM_SAN_PHAM")
 	private String nhomSanPham;
 
+	@Size(max = 400)
 	@Column(name = "NOI_CAP_CMND_CCCD")
 	private String noiCapCmndCccd;
 
 	@Column(name = "PHI_BAO_HIEM")
 	private BigDecimal phiBaoHiem;
 
+	@Size(max = 150)
 	@Column(name = "PHUONG_TAM_TRU")
 	private String phuongTamTru;
 
+	@Size(max = 150)
 	@Column(name = "PHUONG_THUONG_TRU")
 	private String phuongThuongTru;
 
+	@Size(max = 150)
 	@Column(name = "QUAN_TAM_TRU")
 	private String quanTamTru;
 
+	@Size(max = 150)
 	@Column(name = "QUAN_THUONG_TRU")
 	private String quanThuongTru;
 
+	@Size(max = 150)
 	@Column(name = "SO_DIEN_THOAI_1")
 	private String soDienThoai1;
 
+	@Size(max = 150)
 	@Column(name = "SO_DIEN_THOAI_2")
 	private String soDienThoai2;
 
+	@Size(max = 150)
 	@Column(name = "SO_DIEN_THOAI_3")
 	private String soDienThoai3;
 
+	@Size(max = 150)
+	@Column(name = "SO_DIEN_THOAI_4")
+	private String soDienThoai4;
+
+	@Size(max = 20)
 	@Column(name = "SO_DIEN_THOAI_KH")
 	private String soDienThoaiKh;
 
@@ -237,26 +285,35 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "SYS_RUN_DATE")
 	private Date sysRunDate;
 
+	@Size(max = 70)
 	private String team;
 
+	@Size(max = 150)
 	@Column(name = "TEN_CHI_NHAN_PHAT_VAY")
 	private String tenChiNhanPhatVay;
 
+	@Size(max = 150)
 	@Column(name = "TEN_CONG_TY")
 	private String tenCongTy;
 
+	@NotNull
+	@Size(max = 200)
 	@Column(name = "TEN_KHACH_HANG")
 	private String tenKhachHang;
 
+	@Size(max = 15)
 	@Column(name = "THOI_GIAN_CONG_TAC")
 	private String thoiGianCongTac;
 
+	@Size(max = 150)
 	@Column(name = "TINH_TAM_TRU")
 	private String tinhTamTru;
 
+	@Size(max = 150)
 	@Column(name = "TINH_THUONG_TRU")
 	private String tinhThuongTru;
 
+	@Size(max = 50)
 	@Column(name = "TK_TIEN_ICH")
 	private String tkTienIch;
 
@@ -272,6 +329,8 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "UPLOAD_HDR_ID")
 	private BigDecimal uploadHdrId;
 
+	@NotNull
+	@Size(max = 50)
 	private String user1;
 
 	@Column(name = "USERNAME_UPLOAD")
@@ -624,11 +683,11 @@ public class DebtUploadCusLd implements Serializable {
 		this.ngayGiaiNgan = ngayGiaiNgan;
 	}
 
-	public Date getNgayNhanLuong() {
-		return this.ngayNhanLuong;
+	public String getNgayNhanLuong() {
+		return ngayNhanLuong;
 	}
 
-	public void setNgayNhanLuong(Date ngayNhanLuong) {
+	public void setNgayNhanLuong(String ngayNhanLuong) {
 		this.ngayNhanLuong = ngayNhanLuong;
 	}
 
@@ -936,4 +995,27 @@ public class DebtUploadCusLd implements Serializable {
 		this.usernameUpload = usernameUpload;
 	}
 
+	public String getHoVaTen4() {
+		return hoVaTen4;
+	}
+
+	public void setHoVaTen4(String hoVaTen4) {
+		this.hoVaTen4 = hoVaTen4;
+	}
+
+	public String getMoiQhVoiKhachHang4() {
+		return moiQhVoiKhachHang4;
+	}
+
+	public void setMoiQhVoiKhachHang4(String moiQhVoiKhachHang4) {
+		this.moiQhVoiKhachHang4 = moiQhVoiKhachHang4;
+	}
+
+	public String getSoDienThoai4() {
+		return soDienThoai4;
+	}
+
+	public void setSoDienThoai4(String soDienThoai4) {
+		this.soDienThoai4 = soDienThoai4;
+	}
 }

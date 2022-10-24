@@ -78,7 +78,8 @@ public class UploadService implements IUploadService {
     	return null;
 	}
 	
-	private DebtUploadHdr saveDebtUploadFile(AdminUploadDto adminUploadDto) {
+	@Override
+	public DebtUploadHdr saveDebtUploadFile(AdminUploadDto adminUploadDto) {
 		DebtUploadHdr debtUploadHdr = new DebtUploadHdr();
 		debtUploadHdr.setCreateBy(adminUploadDto.getUserNameUpload());
 		debtUploadHdr.setCreateDate(new Date());

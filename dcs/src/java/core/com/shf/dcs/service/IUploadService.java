@@ -8,4 +8,5 @@ import com.shf.dcs.model.DebtUploadHdr;
 
 public interface IUploadService {
 	public List<DebtUploadHdr> getListFileRecase() throws Exception;
+	public DebtUploadHdr saveDebtUploadFile(AdminUploadDto adminUploadDto);
 }
