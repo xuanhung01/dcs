@@ -36,7 +36,9 @@ import com.shf.dcs.dao.RoleDAO;
 import com.shf.dcs.dao.UserRepository;
 import com.shf.dcs.dto.AdminUploadDto;
 import com.shf.dcs.model.DebtUploadCusLd;
+import com.shf.dcs.model.DebtUploadDuThu;
 import com.shf.dcs.model.DebtUploadHdr;
+import com.shf.dcs.model.DebtUploadSoThu;
 import com.shf.dcs.model.DebtUser;
 import com.shf.dcs.service.IUploadService;
 import com.shf.dcs.utils.Constants;
@@ -82,6 +84,15 @@ public class UploadService implements IUploadService {
 
 	@Override
 	public List<DebtUploadCusLd> getListCustomerLdFailById(BigDecimal uploadHdrId) throws Exception {
-		return debtUploadCusLdDAO.getByUploadHdrIdFail(uploadHdrId);
+		return debtUploadCusLdDAO.getByUploadCusLdFailById(uploadHdrId);
+	}
+	
+	public List<DebtUploadDuThu> getListDuThuFailById(BigDecimal uploadHdrId) throws Exception {
+		return debtUploadCusLdDAO.getByUploadDuThuFailById(uploadHdrId);
+	}
+	
+	@Override
+	public List<DebtUploadSoThu> getListSoThuFailById(BigDecimal uploadHdrId) throws Exception {
+		return debtUploadCusLdDAO.getByUploadSoThuFailById(uploadHdrId);
 	}
 }

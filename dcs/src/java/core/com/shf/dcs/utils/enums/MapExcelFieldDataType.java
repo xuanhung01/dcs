@@ -6,5 +6,7 @@ public enum MapExcelFieldDataType {
 	DATESTR, //dd/MM/yyyy
 	DATETIME,
 	INTEGER,
-	DOUBLE;
+	DOUBLE,
+	NULL,
+	NOTNULL;
 }

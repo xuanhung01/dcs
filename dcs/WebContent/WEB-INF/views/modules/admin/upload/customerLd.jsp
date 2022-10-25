@@ -42,6 +42,7 @@
 						<tr role="row">
 							<th>Ngày upload (yyyy-MM-dd)</th>
 							<th>Người tạo</th>
+							<th>Tên file</th>
 							<th>Tổng số dòng</th>
 							<th>Số dòng thành công</th>
 							<th>Số dòng thất bại</th>
@@ -54,6 +55,7 @@
 							<tr>
 								<td>${var.createDate}</td>
 								<td>${var.createBy}</td>
+								<td>${var.fileName}</td>
 								<td>${var.fileRowTotal}</td>
 								<td>${var.fileRowSuccess}</td>
 								<td>${var.fileRowFail}</td>

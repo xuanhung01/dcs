@@ -32,8 +32,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.shf.dcs.dto.AdminUploadDto;
 import com.shf.dcs.error.UploadException;
 import com.shf.dcs.model.DebtUploadCusLd;
+import com.shf.dcs.model.DebtUploadDuThu;
 import com.shf.dcs.model.DebtUploadHdr;
 import com.shf.dcs.service.IUploadCustomerLdService;
+import com.shf.dcs.service.IUploadDuThuService;
 import com.shf.dcs.service.IUploadService;
 import com.shf.dcs.service.IUserService;
 import com.shf.dcs.utils.Constants;
@@ -52,7 +54,7 @@ public class UploadDuThuController {
 	public IUploadService uploadService;
 
 	@Autowired
-	public IUploadCustomerLdService uploadCustomerLdService;
+	public IUploadDuThuService uploadDuThuService;
 
 	@RequestMapping(value = "/load")
 	public String load(Model model, HttpServletRequest request) throws Exception {
@@ -80,7 +82,7 @@ public class UploadDuThuController {
 		List<ObjectError> listErrors = new ArrayList<ObjectError>();
 		try {
 			dto.setUserNameUpload(userService.getLoggedUserName());
-			uploadCustomerLdService.save(dto);
+			uploadDuThuService.save(dto);
 			model.addAttribute("information", "Bạn đã Lưu thông tin thành công!");
 			List<DebtUploadHdr> listDebtUploadHdr = uploadService.getListFileByType(MapHdrFile.FILE_DU_THU.name());
 			request.getSession().setAttribute("listDebtUploadHdr", listDebtUploadHdr);
@@ -101,20 +103,20 @@ public class UploadDuThuController {
 	@ResponseBody
 	public Object downloadSuccess(@PathVariable("id") BigDecimal id,
 			HttpServletRequest request,HttpServletResponse response) throws Exception {
-		List<DebtUploadCusLd> listtUploadRecase =  null;
+		List<DebtUploadDuThu> listtUploadRecase =  null;
 		int rowNum = 1;
 		try {
-			listtUploadRecase = uploadService.getListCustomerLdFailById(id);
+			listtUploadRecase = uploadService.getListDuThuFailById(id);
 			// xuất excel
 			File file = ResourceUtils.getFile("classpath:template/Template-CustomerLdFail.xlsx");
 			Workbook workbook = WorkbookFactory.create(file);
 			Sheet sheet = workbook.getSheetAt(0);
 			// loop row
-			for (DebtUploadCusLd debtUploadCusLd : listtUploadRecase) {
+			for (DebtUploadDuThu debtUploadDuThu : listtUploadRecase) {
 				 Row row = sheet.createRow(rowNum++);
-				 row.createCell(0).setCellValue(debtUploadCusLd.getSoHopDong());
-				 row.createCell(1).setCellValue(debtUploadCusLd.getCif());
-				 row.createCell(2).setCellValue(debtUploadCusLd.getErrorMsg());
+				 row.createCell(0).setCellValue(debtUploadDuThu.getSoHopDong());
+				 row.createCell(1).setCellValue(debtUploadDuThu.getCif());
+				 row.createCell(2).setCellValue(debtUploadDuThu.getErrorMsg());
 			}
 			response.setContentType("application/vnd.ms-excel");
 			response.setHeader("Content-disposition",

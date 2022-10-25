@@ -2,9 +2,6 @@ package com.shf.dcs.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -22,13 +19,10 @@ public class DebtUploadDuThu implements Serializable {
 	@SequenceGenerator(name = "DEBT_UPLOAD_DU_THU_SEQ", sequenceName = "DEBT_UPLOAD_DU_THU_SEQ", allocationSize = 1)
 	private BigDecimal id;
 
-	@NotNull
-	@Size(max = 50)
 	private String cif;
 
-	private BigDecimal dpd;
+	private String dpd;
 
-	@Size(max = 70)
 	@Column(name = "DS_GIU_CASE")
 	private String dsGiuCase;
 
@@ -38,7 +32,6 @@ public class DebtUploadDuThu implements Serializable {
 	@Column(name = "ERROR_MSG")
 	private String errorMsg;
 
-	@Size(max = 400)
 	@Column(name = "GIAI_PHAP_BACKUP")
 	private String giaiPhapBackup;
 
@@ -49,7 +42,6 @@ public class DebtUploadDuThu implements Serializable {
 	@Column(name = "ERROR_CODE")
 	private BigDecimal errorCode;
 
-	@Size(max = 50)
 	@Column(name = "LS_TAC_DONG_GAN_NHAT")
 	private String lsTacDongGanNhat;
 
@@ -57,19 +49,14 @@ public class DebtUploadDuThu implements Serializable {
 	@Column(name = "NGAY_DU_THU")
 	private Date ngayDuThu;
 
-	@Size(max = 400)
 	@Column(name = "NGHE_NGHIEP")
 	private String ngheNghiep;
 
-	@Size(max = 70)
 	private String nhanvien;
 
-	@Size(max = 70)
 	@Column(name = "PHONG_BAN")
 	private String phongBan;
 
-	@NotNull
-	@Size(max = 50)
 	@Column(name = "SO_HOP_DONG")
 	private String soHopDong;
 
@@ -80,8 +67,6 @@ public class DebtUploadDuThu implements Serializable {
 	@Column(name = "SYS_RUN_DATE")
 	private Date sysRunDate;
 
-	@NotNull
-	@Size(max = 150)
 	@Column(name = "TEN_KHACH_HANG")
 	private String tenKhachHang;
 
@@ -91,10 +76,8 @@ public class DebtUploadDuThu implements Serializable {
 	@Column(name = "TONG_DN_KHOAN_VAY")
 	private BigDecimal tongDnKhoanVay;
 
-	@Size(max = 30)
 	private String tuan;
 
-	@Size(max = 30)
 	@Column(name = "TY_LE_DU_THU")
 	private String tyLeDuThu;
 
@@ -123,11 +106,11 @@ public class DebtUploadDuThu implements Serializable {
 		this.cif = cif;
 	}
 
-	public BigDecimal getDpd() {
-		return this.dpd;
+	public String getDpd() {
+		return dpd;
 	}
 
-	public void setDpd(BigDecimal dpd) {
+	public void setDpd(String dpd) {
 		this.dpd = dpd;
 	}
 

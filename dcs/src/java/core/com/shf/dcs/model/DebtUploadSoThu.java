@@ -2,9 +2,6 @@ package com.shf.dcs.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -22,8 +19,6 @@ public class DebtUploadSoThu implements Serializable {
 	@SequenceGenerator(name = "DEBT_UPLOAD_SO_THU_SEQ", sequenceName = "DEBT_UPLOAD_SO_THU_SEQ", allocationSize = 1)
 	private BigDecimal id;
 
-	@NotNull
-	@Size(max = 50)
 	private String cif;
 
 	@Column(name = "ERROR_MSG")
@@ -40,16 +35,12 @@ public class DebtUploadSoThu implements Serializable {
 	@Column(name = "NGAY_BAN_GIAO")
 	private Date ngayBanGiao;
 
-	@Temporal(TemporalType.DATE)
 	@Column(name = "NGAY_GHI_NHAN")
-	private Date ngayGhiNhan;
+	private BigDecimal ngayGhiNhan;
 
-	@Size(max = 10)
 	@Column(name = "NHOM_DPD")
 	private String nhomDpd;
 
-	@NotNull
-	@Size(max = 50)
 	@Column(name = "SO_HOP_DONG")
 	private String soHopDong;
 
@@ -63,8 +54,6 @@ public class DebtUploadSoThu implements Serializable {
 	@Column(name = "SYS_RUN_DATE")
 	private Date sysRunDate;
 
-	@NotNull
-	@Size(max = 150)
 	@Column(name = "TEN_KHACH_HANG")
 	private String tenKhachHang;
 
@@ -105,11 +94,11 @@ public class DebtUploadSoThu implements Serializable {
 		this.ngayBanGiao = ngayBanGiao;
 	}
 
-	public Date getNgayGhiNhan() {
-		return this.ngayGhiNhan;
+	public BigDecimal getNgayGhiNhan() {
+		return ngayGhiNhan;
 	}
 
-	public void setNgayGhiNhan(Date ngayGhiNhan) {
+	public void setNgayGhiNhan(BigDecimal ngayGhiNhan) {
 		this.ngayGhiNhan = ngayGhiNhan;
 	}
 

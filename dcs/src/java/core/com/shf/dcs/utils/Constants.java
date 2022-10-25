@@ -100,4 +100,8 @@ public class Constants {
 	public static String PROJECT_CODE = "DCS";
 	public static String DOCUMENT_CODE = "DOCUMENT_CODE_LEGAL";
 	public static String DOCUMENT_NAME = "Thông tin hồ sơ Legal thu hồi nợ";
+	// Enum class
+	public static String MAP_EXCEL_FIELD_CUS_LD = "MapExcelFieldCusLd";
+	public static String MAP_EXCEL_FIELD_DU_THU = "MapExcelFieldDuThu";
+	public static String MAP_EXCEL_FIELD_SO_THU = "MapExcelFieldSoThu";
 }

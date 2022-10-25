@@ -1,5 +1,7 @@
 package com.shf.dcs.utils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,6 +43,16 @@ public class DateUtilDcs {
 			e.printStackTrace();
 		}
 		return date;
+	}
+	
+	public static BigDecimal getNumericCellValue(Cell cell) {
+		BigDecimal bigDecimal = null;
+		try {
+			bigDecimal = new BigDecimal(cell.getNumericCellValue()).setScale(2, RoundingMode.DOWN) ;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bigDecimal;
 	}
 
 	public static String convertDateToString(Date date) {

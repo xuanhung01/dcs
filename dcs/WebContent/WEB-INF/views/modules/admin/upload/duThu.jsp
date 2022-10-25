@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<spring:url value="/admin/uploadCustomerLd/add?${_csrf.parameterName}=${_csrf.token}" var="addFormSubmitUrl" />
+<spring:url value="/admin/uploadDuThu/add?${_csrf.parameterName}=${_csrf.token}" var="addFormSubmitUrl" />
 
 <form:form modelAttribute="formModel" id="editProfileForm" class="form-horizontal" formMode="create" action="${addFormSubmitUrl}" method="POST" enctype="multipart/form-data" acceptCharset="utf-8">
 	<h4 class="widgettitle">Upload File dự thu</h4>
@@ -42,6 +42,7 @@
 						<tr role="row">
 							<th>Ngày upload (yyyy-MM-dd)</th>
 							<th>Người tạo</th>
+							<th>Tên file</th>
 							<th>Tổng số dòng</th>
 							<th>Số dòng thành công</th>
 							<th>Số dòng thất bại</th>
@@ -54,6 +55,7 @@
 							<tr>
 								<td>${var.createDate}</td>
 								<td>${var.createBy}</td>
+								<td>${var.fileName}</td>
 								<td>${var.fileRowTotal}</td>
 								<td>${var.fileRowSuccess}</td>
 								<td>${var.fileRowFail}</td>
@@ -91,7 +93,7 @@ $(function() {
 	
 	$(document).on("click", ".btnExportFail", function(e) {
 		var id = $(this).attr("id");
-		var url = "<c:url value="/admin/uploadCustomerLd/resultFail/"/>" + id;
+		var url = "<c:url value="/admin/uploadDuThu/resultFail/"/>" + id;
 		
 		//window.location.href = url;
 		HoldOn.open({ theme:"sk-cube-grid",message: 'Do dung lượng file quá lớn, Bạn vui lòng đợi trong giây lát' })

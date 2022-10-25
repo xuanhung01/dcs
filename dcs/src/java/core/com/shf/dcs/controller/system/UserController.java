@@ -250,7 +250,6 @@ public class UserController {
 	public String activeUser(@PathVariable("id") String userName,
 			HttpServletRequest request, Model model) throws Exception {
 		DebtUser user = userService.findUserByUserName(userName);
-		List<ObjectError> errors = new ArrayList<ObjectError>();
 		if(user.getEnabled()) {
 			user.setEnabled(false);
 			List<String> listUserName = new ArrayList<String>();
