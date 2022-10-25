@@ -2,6 +2,10 @@ package com.shf.dcs.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,6 +13,8 @@ import java.util.Date;
  * The persistent class for the DEBT_UPLOAD_HDR database table.
  * 
  */
+@Getter
+@Setter
 @Entity
 @Table(name = "DEBT_UPLOAD_HDR")
 public class DebtUploadHdr implements Serializable {
@@ -47,120 +53,16 @@ public class DebtUploadHdr implements Serializable {
 	@Column(name = "LAST_UPDATED_DATE")
 	private Date lastUpdatedDate;
 
-	private String status;
+	@Column(name = "ERROR_CODE")
+	private BigDecimal errorCode;
 
-	@Column(name = "STATUS_NAME")
-	private String statusName;
+	@Column(name = "ERROR_MSG")
+	private String errorMsg;
+	
+	@Column(name = "FILE_TYPE")
+	private String fileType;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "SYS_RUN_DATE")
 	private Date sysRunDate;
-
-	public DebtUploadHdr() {
-	}
-
-	public BigDecimal getId() {
-		return id;
-	}
-
-	public void setId(BigDecimal id) {
-		this.id = id;
-	}
-
-	public String getCreateBy() {
-		return this.createBy;
-	}
-
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
-	}
-
-	public Date getCreateDate() {
-		return this.createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getFileName() {
-		return this.fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	public BigDecimal getFileRowFail() {
-		return this.fileRowFail;
-	}
-
-	public void setFileRowFail(BigDecimal fileRowFail) {
-		this.fileRowFail = fileRowFail;
-	}
-
-	public BigDecimal getFileRowSuccess() {
-		return this.fileRowSuccess;
-	}
-
-	public void setFileRowSuccess(BigDecimal fileRowSuccess) {
-		this.fileRowSuccess = fileRowSuccess;
-	}
-
-	public BigDecimal getFileRowTotal() {
-		return this.fileRowTotal;
-	}
-
-	public void setFileRowTotal(BigDecimal fileRowTotal) {
-		this.fileRowTotal = fileRowTotal;
-	}
-
-	public BigDecimal getFileSize() {
-		return this.fileSize;
-	}
-
-	public void setFileSize(BigDecimal fileSize) {
-		this.fileSize = fileSize;
-	}
-
-	public Date getLastUpdatedDate() {
-		return this.lastUpdatedDate;
-	}
-
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
-	}
-
-	public String getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getStatusName() {
-		return this.statusName;
-	}
-
-	public void setStatusName(String statusName) {
-		this.statusName = statusName;
-	}
-
-	public Date getSysRunDate() {
-		return this.sysRunDate;
-	}
-
-	public void setSysRunDate(Date sysRunDate) {
-		this.sysRunDate = sysRunDate;
-	}
-
 }

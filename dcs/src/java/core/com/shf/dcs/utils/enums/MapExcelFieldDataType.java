@@ -1,4 +1,4 @@
-package com.shf.dcs.utils;
+package com.shf.dcs.utils.enums;
 
 public enum MapExcelFieldDataType {
 	STRING,

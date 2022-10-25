@@ -79,8 +79,8 @@ public class DebtUploadCusLd implements Serializable {
 
 	private BigDecimal emi;
 
-	@Column(name = "ERR_MSG")
-	private String errMsg;
+	@Column(name = "ERROR_MSG")
+	private String errorMsg;
 
 	@Size(max = 10)
 	@Column(name = "GIOI_TINH")
@@ -134,8 +134,8 @@ public class DebtUploadCusLd implements Serializable {
 	@Column(name = "LAST_UPDATE_DATE")
 	private Date lastUpdateDate;
 
-	@Column(name = "LOAD_FLAG")
-	private BigDecimal loadFlag;
+	@Column(name = "ERROR_CODE")
+	private BigDecimal errorCode;
 
 	@Size(max = 50)
 	@Column(name = "LS_TAC_DONG_GAN_NHAT")
@@ -459,14 +459,6 @@ public class DebtUploadCusLd implements Serializable {
 		this.emi = emi;
 	}
 
-	public String getErrMsg() {
-		return this.errMsg;
-	}
-
-	public void setErrMsg(String errMsg) {
-		this.errMsg = errMsg;
-	}
-
 	public String getGioiTinh() {
 		return this.gioiTinh;
 	}
@@ -577,14 +569,6 @@ public class DebtUploadCusLd implements Serializable {
 
 	public void setLastUpdateDate(Date lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
-	}
-
-	public BigDecimal getLoadFlag() {
-		return this.loadFlag;
-	}
-
-	public void setLoadFlag(BigDecimal loadFlag) {
-		this.loadFlag = loadFlag;
 	}
 
 	public String getLsTacDongGanNhat() {
@@ -1017,5 +1001,21 @@ public class DebtUploadCusLd implements Serializable {
 
 	public void setSoDienThoai4(String soDienThoai4) {
 		this.soDienThoai4 = soDienThoai4;
+	}
+
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
+	public BigDecimal getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(BigDecimal errorCode) {
+		this.errorCode = errorCode;
 	}
 }

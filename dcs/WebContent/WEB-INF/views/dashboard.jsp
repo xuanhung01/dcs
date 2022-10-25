@@ -41,6 +41,12 @@
 						<c:when test="${subpage == 'admin_upload_customerLd'}">
 							<jsp:include page="modules/admin/uploadCustomerLd.jsp" />
 						</c:when>
+						<c:when test="${subpage == 'admin_upload_duthu'}">
+							<jsp:include page="modules/admin/uploadDuThu.jsp" />
+						</c:when>
+						<c:when test="${subpage == 'admin_upload_sothu'}">
+							<jsp:include page="modules/admin/uploadSoThu.jsp" />
+						</c:when>
 						<c:when test="${subpage == 'blank'}">
 						</c:when>
 						<c:otherwise>

@@ -27,12 +27,16 @@ import com.shf.dcs.dto.AdminUploadDto;
 import com.shf.dcs.dto.DebtUploadCusLdDto;
 import com.shf.dcs.error.UploadException;
 import com.shf.dcs.model.DebtUploadCusLd;
+import com.shf.dcs.model.DebtUploadDuThu;
 import com.shf.dcs.model.DebtUploadHdr;
+import com.shf.dcs.model.DebtUploadSoThu;
 import com.shf.dcs.service.IUploadCustomerLdService;
+import com.shf.dcs.service.IUploadSoThuService;
 import com.shf.dcs.utils.Constants;
 import com.shf.dcs.utils.DateUtilDcs;
-import com.shf.dcs.utils.enums.MapExcelFieldCusLd;
 import com.shf.dcs.utils.enums.MapExcelFieldDataType;
+import com.shf.dcs.utils.enums.MapExcelFieldDuThu;
+import com.shf.dcs.utils.enums.MapExcelFieldSoThu;
 import com.shf.dcs.utils.enums.MapHdrFile;
 
 import org.apache.commons.lang3.StringUtils;
@@ -42,12 +46,12 @@ import org.apache.log4j.Logger;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
-public class UploadCustomerLdService extends ServiceGenericImpl<DebtUploadCusLd> implements IUploadCustomerLdService {
-	private static Logger logger = Logger.getLogger(UploadCustomerLdService.class);
+public class UploadSoThuService extends ServiceGenericImpl<DebtUploadSoThu> implements IUploadSoThuService {
+	private static Logger logger = Logger.getLogger(UploadSoThuService.class);
 
 	@Override
 	public void save(AdminUploadDto dto) throws UploadException, Exception {
-		List<DebtUploadCusLd> listDebtUploadCusLd = new ArrayList<DebtUploadCusLd>();
+		List<DebtUploadSoThu> listDebtUploadSoThu = new ArrayList<DebtUploadSoThu>();
 		Integer rowNum = 0;
 		// valid file
 		try {
@@ -71,25 +75,25 @@ public class UploadCustomerLdService extends ServiceGenericImpl<DebtUploadCusLd>
 				if (rowNum == 1) {
 					continue;
 				}
-				DebtUploadCusLd debtUploadCusLd = new DebtUploadCusLd();
+				DebtUploadSoThu debtUploadSoThu = new DebtUploadSoThu();
 				Iterator<Cell> cellIterator = row.cellIterator();
 				// map từ cell sang object
-				debtUploadCusLd = mapCellToObj(cellIterator, rowNum);
+				debtUploadSoThu = mapCellToObj(cellIterator, rowNum);
 				// valid NOTNULL, SIZE
-				Set<ConstraintViolation<DebtUploadCusLd>> violations = validator.validate(debtUploadCusLd);
+				Set<ConstraintViolation<DebtUploadSoThu>> violations = validator.validate(debtUploadSoThu);
 				// Nếu xảy ra lỗi ghi ra màn hình
 				if (!violations.isEmpty()) {
 					throw new UploadException(validAnotationEntity(rowNum, violations));
 				}
 				// save
-				listDebtUploadCusLd.add(debtUploadCusLd);
-				logger.info("SOHOPDONG========" + debtUploadCusLd.getSoHopDong());
+				listDebtUploadSoThu.add(debtUploadSoThu);
+				logger.info("SOHOPDONG========" + debtUploadSoThu.getSoHopDong());
 				// set 1 số giá trị
-				debtUploadCusLd.setSysRunDate(new Date());
-				debtUploadCusLd.setUsernameUpload(dto.getUserNameUpload());
-				debtUploadCusLd.setUploadHdrId(debtUploadHdr.getId());
+				debtUploadSoThu.setSysRunDate(new Date());
+				debtUploadSoThu.setUsernameUpload(dto.getUserNameUpload());
+				debtUploadSoThu.setUploadHdrId(debtUploadHdr.getId());
 				// save
-				debtUploadCusLdDAO.saveAndFlush(debtUploadCusLd);
+				debtUploadSoThuDAO.saveAndFlush(debtUploadSoThu);
 			}
 		} catch (UploadException e) {
 			throw e;
@@ -98,7 +102,7 @@ public class UploadCustomerLdService extends ServiceGenericImpl<DebtUploadCusLd>
 			throw e;
 		}
 		// Kiểm tra có dữ liệu upload không
-		if (listDebtUploadCusLd == null || listDebtUploadCusLd.isEmpty()) {
+		if (listDebtUploadSoThu == null || listDebtUploadSoThu.isEmpty()) {
 			throw new Exception("File upload đang đang không có dữ liệu");
 		}
 
@@ -106,12 +110,12 @@ public class UploadCustomerLdService extends ServiceGenericImpl<DebtUploadCusLd>
 	}
 	
 	@SuppressWarnings({ "unchecked" })
-	private List<ObjectError> validAnotationEntity(Integer rowNum, Set<ConstraintViolation<DebtUploadCusLd>> violations) {
+	private List<ObjectError> validAnotationEntity(Integer rowNum, Set<ConstraintViolation<DebtUploadSoThu>> violations) {
 		List<ObjectError> listErrors = new ArrayList<ObjectError>();
 		String columnName = "";
 		for (ConstraintViolation<?> violation : violations) {
 			// kiểm tra lỗi thuộc anatation type nào
-			columnName = MapExcelFieldCusLd.valueOf(violation.getPropertyPath().toString()).getValue();
+			columnName = MapExcelFieldSoThu.valueOf(violation.getPropertyPath().toString()).getValue();
 			// NotNull
 			if (violation.getConstraintDescriptor().getAnnotation().annotationType().getSimpleName()
 					.equals("NotNull")) {
@@ -143,9 +147,9 @@ public class UploadCustomerLdService extends ServiceGenericImpl<DebtUploadCusLd>
 	}
 	
 	@SuppressWarnings("static-access")
-	protected DebtUploadCusLd mapCellToObj(Iterator<Cell> cellIterator, Integer rowNum) throws Exception{
+	protected DebtUploadSoThu mapCellToObj(Iterator<Cell> cellIterator, Integer rowNum) throws Exception{
 		DataFormatter dataFormatter = new DataFormatter();
-		DebtUploadCusLd debtUploadCusLd = new DebtUploadCusLd();
+		DebtUploadSoThu debtUploadSoThu = new DebtUploadSoThu();
 		while (cellIterator.hasNext()) {
 			Cell cell = cellIterator.next();
 			String tempStrCell = dataFormatter.formatCellValue(cell);
@@ -156,54 +160,54 @@ public class UploadCustomerLdService extends ServiceGenericImpl<DebtUploadCusLd>
 				continue;
 			}
 			// set value column
-			MapExcelFieldCusLd mapExcelFieldCusLd = MapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex());
-			if(mapExcelFieldCusLd == null) {
+			MapExcelFieldSoThu mapExcelFieldSoThu = MapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex());
+			if(mapExcelFieldSoThu == null) {
 				continue;
 			}
-			Field field = debtUploadCusLd.getClass().getDeclaredField(mapExcelFieldCusLd.name());
+			Field field = mapExcelFieldSoThu.getClass().getDeclaredField(mapExcelFieldSoThu.name());
 			field.setAccessible(true);
 			// Nếu INTEGER
-			if(MapExcelFieldDataType.INTEGER.compareTo(mapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
+			if(MapExcelFieldDataType.INTEGER.compareTo(mapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
 				// check định dạng NUMBER
 				if (!NumberUtils.isNumber(tempStrCell)) {
-					String[] params = new String[] { rowNum.toString(), mapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex()).getValue() };
+					String[] params = new String[] { rowNum.toString(), mapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex()).getValue() };
 					String message = messageSource.getMessage("upload.notNumber.message", params,LocaleContextHolder.getLocale());
 					throw new Exception(message);
 				}
-				field.set(debtUploadCusLd, new BigDecimal(tempStrCell));
+				field.set(debtUploadSoThu, new BigDecimal(tempStrCell));
 			}
 			// Nếu DATE
-			if(MapExcelFieldDataType.DATE.compareTo(mapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
+			if(MapExcelFieldDataType.DATE.compareTo(mapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
 				// check định dạng NUMBER
 				Date dateCell = DateUtilDcs.getDateCellValue(cell);
 				if (dateCell == null) {
-					String[] params = new String[] { rowNum.toString(), mapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex()).getValue() };
+					String[] params = new String[] { rowNum.toString(), mapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex()).getValue() };
 					String message = messageSource.getMessage("upload.notDate.message", params,LocaleContextHolder.getLocale());
 					throw new Exception(message);
 				}
-				field.set(debtUploadCusLd, dateCell);
+				field.set(debtUploadSoThu, dateCell);
 			}
 			// Nếu DATESTR
-			if(MapExcelFieldDataType.DATESTR.compareTo(mapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
+			if(MapExcelFieldDataType.DATESTR.compareTo(mapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
 				// check định dạng String Date dd/MM/yyyy
 				Date dateCell = DateUtilDcs.convertStringToDate(tempStrCell);
 				if (dateCell == null) {
-					String[] params = new String[] { rowNum.toString(), mapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex()).getValue() };
+					String[] params = new String[] { rowNum.toString(), mapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex()).getValue() };
 					String message = messageSource.getMessage("upload.notDate.message", params,LocaleContextHolder.getLocale());
 					throw new Exception(message);
 				}
-				field.set(debtUploadCusLd, dateCell);
+				field.set(debtUploadSoThu, dateCell);
 			}
 			// Nếu STRING
-			if(MapExcelFieldDataType.STRING.compareTo(mapExcelFieldCusLd.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
+			if(MapExcelFieldDataType.STRING.compareTo(mapExcelFieldSoThu.valueOfIndex(cell.getColumnIndex()).getDataType()) == 0 ) {
 				// check định dạng STRING
-				field.set(debtUploadCusLd, tempStrCell);
+				field.set(debtUploadSoThu, tempStrCell);
 			}
 		}		
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonString = mapper.writeValueAsString(debtUploadCusLd);
+		String jsonString = mapper.writeValueAsString(debtUploadSoThu);
 		logger.info(jsonString);
-		return debtUploadCusLd;
+		return debtUploadSoThu;
 	}
 
 }

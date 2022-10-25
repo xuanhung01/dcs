@@ -30,10 +30,12 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
+import com.shf.dcs.dao.DebtUploadCusLdDAO;
 import com.shf.dcs.dao.DebtUploadHdrDAO;
 import com.shf.dcs.dao.RoleDAO;
 import com.shf.dcs.dao.UserRepository;
 import com.shf.dcs.dto.AdminUploadDto;
+import com.shf.dcs.model.DebtUploadCusLd;
 import com.shf.dcs.model.DebtUploadHdr;
 import com.shf.dcs.model.DebtUser;
 import com.shf.dcs.service.IUploadService;
@@ -55,11 +57,11 @@ public class UploadService implements IUploadService {
 	RoleDAO roleDao;
 	
 	@Autowired
-	private Environment env;
+	protected DebtUploadCusLdDAO debtUploadCusLdDAO;
 	
 	@Override
-	public List<DebtUploadHdr> getListFileRecase() throws Exception {
-		return debtUploadHdrDAO.getListFileRecase();
+	public List<DebtUploadHdr> getListFileByType(String fileType) throws Exception {
+		return debtUploadHdrDAO.getListFileByType(fileType);
 	}
 	
 	/**
@@ -77,24 +79,9 @@ public class UploadService implements IUploadService {
 		}
     	return null;
 	}
-	
+
 	@Override
-	public DebtUploadHdr saveDebtUploadFile(AdminUploadDto adminUploadDto) {
-		DebtUploadHdr debtUploadHdr = new DebtUploadHdr();
-		debtUploadHdr.setCreateBy(adminUploadDto.getUserNameUpload());
-		debtUploadHdr.setCreateDate(new Date());
-		debtUploadHdr.setFileName(adminUploadDto.getFile1().getOriginalFilename());
-		debtUploadHdr.setFileSize(BigDecimal.valueOf(adminUploadDto.getFile1().getSize()));
-		debtUploadHdr.setStatus(Constants.ERROR_CODE_00);
-		if(adminUploadDto.getFileType() == 1) {
-			debtUploadHdr.setDescription("TN");
-		} else {
-			debtUploadHdr.setDescription("TPB");
-		}
-		debtUploadHdr.setFileRowTotal(adminUploadDto.getFileRowSuccess());
-		// debtUploadHdr.setFileRowSuccess(adminUploadDto.getFileRowSuccess());
-		debtUploadHdr.setSysRunDate(new Date());
-		debtUploadHdr = debtUploadHdrDAO.save(debtUploadHdr);
-		return debtUploadHdr;
+	public List<DebtUploadCusLd> getListCustomerLdFailById(BigDecimal uploadHdrId) throws Exception {
+		return debtUploadCusLdDAO.getByUploadHdrIdFail(uploadHdrId);
 	}
 }

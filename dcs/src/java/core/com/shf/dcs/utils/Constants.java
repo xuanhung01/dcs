@@ -35,7 +35,7 @@ public class Constants {
 	public static String PRIVILEGE_ADHOC_ALL = "PRIVILEGE_ADHOC_COLLECTOR";
 	// Excel upload user
 	public static int MAX_NUMBER_UPLOAD_USER = 150;
-	public static int MAX_NUMBER_UPLOAD = 100000;
+	public static int MAX_NUMBER_UPLOAD = 10000;
 	public static String ENABLE_ACTIVE = "1";
 	public static String SEX_MALE = "MALE";
 	public static BigDecimal ID_CONTACT_METHOD = new BigDecimal("1");

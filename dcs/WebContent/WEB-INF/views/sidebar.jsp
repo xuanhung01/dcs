@@ -37,6 +37,12 @@
 						<c:if test="${itemC == 1031}">
 							<li><a tabindex="-1" id='submenu_1031' class="submenu" href="<c:url value="/admin/uploadCustomerLd/load"/>">Upload Customer - LD</a></li>
 						</c:if>
+						<c:if test="${itemC == 1032}">
+							<li><a tabindex="-1" id='submenu_1032' class="submenu" href="<c:url value="/admin/uploadSoThu/load"/>">Upload Số Thu</a></li>
+						</c:if>
+						<c:if test="${itemC == 1033}">
+							<li><a tabindex="-1" id='submenu_1033' class="submenu" href="<c:url value="/admin/uploadDuThu/load"/>">Upload Dự Thu</a></li>
+						</c:if>
 					  </c:forEach>
 			        </ul>
 			  	</li>

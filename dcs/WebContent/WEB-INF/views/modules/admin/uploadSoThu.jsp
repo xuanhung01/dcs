@@ -5,6 +5,6 @@
 
 <c:choose>
 	<c:when test="${act==null || act=='list'}">
-		<jsp:include page="upload/customerLd.jsp"></jsp:include>
+		<jsp:include page="upload/soThu.jsp"></jsp:include>
 	</c:when>
 </c:choose>

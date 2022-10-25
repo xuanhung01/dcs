@@ -57,7 +57,7 @@
 								<td>${var.fileRowTotal}</td>
 								<td>${var.fileRowSuccess}</td>
 								<td>${var.fileRowFail}</td>
-								<td>${var.statusName}</td>
+								<td>${var.errorMsg}</td>
 								<td>
 									<c:if test="${(var.fileRowFail != null) && (var.fileRowFail > 0)}">
 										<a class="btn btn-default btnExportFail" title="Export" id="${var.id}"><i class="glyphicon glyphicon-download-alt"></i></a>

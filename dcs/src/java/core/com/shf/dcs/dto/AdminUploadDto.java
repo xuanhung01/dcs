@@ -8,7 +8,8 @@ import lombok.*;
 @Setter
 public class AdminUploadDto {
 	
-	private Long fileType;
+	private String fileType;
+	private String description;
 	private CommonsMultipartFile file1;
 	private String hidAction;
 	private String userNameUpload;
@@ -17,4 +18,5 @@ public class AdminUploadDto {
 	private BigDecimal fileRowTotal;
 	private String soHopDong;
 	private Boolean hasRecaseUserNull;
+	//
 }

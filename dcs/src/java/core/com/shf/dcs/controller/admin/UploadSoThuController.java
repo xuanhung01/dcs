@@ -40,10 +40,10 @@ import com.shf.dcs.utils.Constants;
 import com.shf.dcs.utils.enums.MapHdrFile;
 
 @Controller
-@RequestMapping("/admin/uploadCustomerLd")
-public class UploadCustomerLdController {
+@RequestMapping("/admin/uploadSoThu")
+public class UploadSoThuController {
 
-	private static Logger logger = Logger.getLogger(UploadCustomerLdController.class);
+	private static Logger logger = Logger.getLogger(UploadSoThuController.class);
 
 	@Autowired
 	public IUserService userService;
@@ -56,9 +56,9 @@ public class UploadCustomerLdController {
 
 	@RequestMapping(value = "/load")
 	public String load(Model model, HttpServletRequest request) throws Exception {
-		model.addAttribute("subpage", "admin_upload_customerLd");
+		model.addAttribute("subpage", "admin_upload_sothu");
 		model.addAttribute("formModel", new AdminUploadDto());
-		List<DebtUploadHdr> listDebtUploadHdr = uploadService.getListFileByType(MapHdrFile.FILE_CUS_LD.name());
+		List<DebtUploadHdr> listDebtUploadHdr = uploadService.getListFileByType(MapHdrFile.FILE_SO_THU.name());
 		//
 		request.getSession().setAttribute("menuActive", "admin");
 		request.getSession().setAttribute("listDebtUploadHdr", listDebtUploadHdr);
@@ -68,7 +68,7 @@ public class UploadCustomerLdController {
 	// shows the empty form with get request
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String handleGetRequest(Model model, HttpServletRequest request) {
-		model.addAttribute("subpage", "admin_upload_customerLd");
+		model.addAttribute("subpage", "admin_upload_sothu");
 		model.addAttribute("formModel", new AdminUploadDto());
 		//
 		return Constants.URL_DASH_BOARD;
@@ -82,7 +82,7 @@ public class UploadCustomerLdController {
 			dto.setUserNameUpload(userService.getLoggedUserName());
 			uploadCustomerLdService.save(dto);
 			model.addAttribute("information", "Bạn đã Lưu thông tin thành công!");
-			List<DebtUploadHdr> listDebtUploadHdr = uploadService.getListFileByType(MapHdrFile.FILE_CUS_LD.name());
+			List<DebtUploadHdr> listDebtUploadHdr = uploadService.getListFileByType(MapHdrFile.FILE_SO_THU.name());
 			request.getSession().setAttribute("listDebtUploadHdr", listDebtUploadHdr);
 		} catch (UploadException e) {
 			logger.error(ExceptionUtils.getStackTrace(e));
@@ -92,7 +92,7 @@ public class UploadCustomerLdController {
 			listErrors.add(new ObjectError("OtherException", e.getMessage()));
 			model.addAttribute("listErrors", listErrors);
 		}
-		model.addAttribute("subpage", "admin_upload_customerLd");
+		model.addAttribute("subpage", "admin_upload_sothu");
 		model.addAttribute("formModel", dto);
 		return Constants.URL_DASH_BOARD;
 	}

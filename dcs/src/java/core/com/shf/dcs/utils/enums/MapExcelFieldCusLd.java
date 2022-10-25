@@ -1,6 +1,6 @@
-package com.shf.dcs.utils;
+package com.shf.dcs.utils.enums;
 
-public enum MapExcelFieldCusLd {
+public enum MapExcelFieldCusLd{
 	
 	// Customer-LD
 	soHopDong(0,"Số hợp đồng",MapExcelFieldDataType.STRING),
@@ -96,7 +96,7 @@ public enum MapExcelFieldCusLd {
     public String getValue() {
         return value;
     }
-	public MapExcelFieldDataType getDataType() {
+    public MapExcelFieldDataType getDataType() {
 		return dataType;
 	}
 

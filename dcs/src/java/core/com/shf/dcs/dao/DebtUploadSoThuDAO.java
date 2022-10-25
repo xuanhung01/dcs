@@ -8,9 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.shf.dcs.model.DebtUploadCusLd;
+import com.shf.dcs.model.DebtUploadSoThu;
 
-public interface DebtUploadCusLdDAO extends JpaRepository<DebtUploadCusLd, BigDecimal>{
+public interface DebtUploadSoThuDAO extends JpaRepository<DebtUploadSoThu, BigDecimal>{
 
-	@Query(nativeQuery=true,value="select * from DEBT_UPLOAD_CUS_LD where UPLOAD_HDR_ID =:uploadHdrId AND ERROR_CODE IN (99)")
+	@Query(nativeQuery=true,value="select * from DEBT_UPLOAD_SO_THU where UPLOAD_HDR_ID =:uploadHdrId AND ERROR_CODE IN (99)")
 	List<DebtUploadCusLd> getByUploadHdrIdFail(@Param("uploadHdrId") BigDecimal uploadHdrId);
 }
