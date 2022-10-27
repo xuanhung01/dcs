@@ -19,8 +19,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -29,22 +27,18 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-
 import com.shf.dcs.validation.EmailValidator;
 import com.shf.dcs.validation.PasswordMatchesValidator;
-
-import freemarker.template.TemplateExceptionHandler;
 
 @Configuration
 @ComponentScan(basePackages = { "com.shf.dcs.controller", "com.shf.dcs.validation" })
 @EnableWebMvc
 @EnableCaching
-public class SpringMvcConfig extends WebMvcConfigurerAdapter  {
+public class SpringMvcConfig extends WebMvcConfigurationSupport  {
 	
 	private static Logger logger = Logger.getLogger(SpringAppConfig.class);
 	
@@ -73,17 +67,6 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter  {
 		// messageSource.setBasename("messages");
 		messageSource.setBasename("classpath:messages");
 		return messageSource;
-	}
-
-	@Bean
-	public freemarker.template.Configuration freeMakerConfiguration() {
-		freemarker.template.Configuration cfg = new freemarker.template.Configuration();
-
-		cfg.setServletContextForTemplateLoading(context, "WEB-INF/templates");
-		cfg.setDefaultEncoding("UTF-8");
-		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-
-		return cfg;
 	}
 
 	@Override
@@ -132,15 +115,6 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter  {
 	public PasswordMatchesValidator passwordMatchesValidator() {
 		return new PasswordMatchesValidator();
 	}
-	
-	@Bean
-	public LocalValidatorFactoryBean validator()
-	{
-	    LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
-	    bean.setValidationMessageSource(messageSource());
-	    return bean;
-	}
-
 	
     @Bean
     public CacheManager cacheManager() {

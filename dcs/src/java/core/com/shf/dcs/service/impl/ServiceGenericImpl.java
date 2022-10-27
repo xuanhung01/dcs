@@ -49,9 +49,6 @@ public class ServiceGenericImpl<Entity extends Object> {
 
 	@Autowired
 	protected DebtUploadCusLdDAO debtUploadCusLdDAO;
-
-	@Autowired
-	protected Validator validator;
 	
 	@Autowired
 	DebtUploadHdrDAO debtUploadHdrDAO;
